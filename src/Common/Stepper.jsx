@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Pencil, Star, ChevronRight } from "lucide-react";
+import { Pencil, Star, ChevronRight, ChevronLeft } from "lucide-react";
 
 const steps = [
   { label: "Brand Foundation", icon: <Pencil size={14} fill="#000000" /> },
@@ -15,6 +15,10 @@ const Stepper = () => {
 
   const goNext = () => {
     if (currentStep < steps.length) setCurrentStep(currentStep + 1);
+  };
+
+  const goPrev = () => {
+    if (currentStep > 0) setCurrentStep(currentStep - 1);
   };
 
 
@@ -187,6 +191,26 @@ const Stepper = () => {
     </div>
   </div>
 
+ <div style={{ display: "flex", justifyContent: "flex-end", gap: 10 }}>
+        <button
+          onClick={goPrev}
+          disabled={currentStep === 0}
+          style={{
+           padding: "8px 16px",
+      borderRadius: 10,
+      backgroundColor: "#2C7A7B",
+      color: "#fff",
+      border: "none",
+      cursor: "pointer",
+      display: "flex",
+      alignItems: "center",
+      gap: 6,
+      height: "40px",
+      marginTop: "10px",
+          }}
+        >
+         <ChevronLeft size={14}/> Previous
+        </button>
   <button
     onClick={goNext}
     disabled={currentStep >= steps.length}
@@ -206,6 +230,7 @@ const Stepper = () => {
   >
     Next <ChevronRight size={14} />
   </button>
+</div>
 </div>
 
     </div>
