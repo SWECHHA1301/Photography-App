@@ -1,11 +1,12 @@
 import logo from './logo.svg';
 import './App.css';
 import Stepper from './Common/Stepper';
+import BrandColors from './BrandColor';
 
 function App() {
   return (
-    <div className="App">
-      <Stepper/>
+    <div>
+      <BrandColors/>
     </div>
   );
 }
