@@ -93,7 +93,7 @@ const Stepper = () => {
                   justifyContent: "center",
                   fontSize: 14,
                   fontWeight: 600,
-                  marginBottom: 5,
+                  marginBottom: 10,
                   zIndex: 2,
                 }}
               >

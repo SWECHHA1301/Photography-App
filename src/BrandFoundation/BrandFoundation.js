@@ -1,10 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
+import { ChevronDown, ChevronRight } from "lucide-react";
 import Stepper from "../Common/Stepper";
 import BuisnessInfo from "./components/BuisnessInfo";
 import ContactInfo from "./components/ContactInfo";
 import BrandColors from "./components/BrandColors";
 
 export default function BrandFoundation() {
+  const [isBusinessOpen, setBusinessOpen] = useState(true);
+  const [isContactOpen, setContactOpen] = useState(true);
+  const [isColorsOpen, setColorsOpen] = useState(true);
+
   const styles = {
     container: {
       backgroundColor: "#fff",
@@ -13,12 +18,22 @@ export default function BrandFoundation() {
       borderRadius: "12px",
       border: "1px solid #ddd",
       width: "100%",
-      maxWidth: "1322px", 
+      maxWidth: "1322px",
       maxHeight: "1660px",
     },
-    heading: {
-      fontSize: "18px",
-      margin: "16px 0 4px",
+    sectionWrapper: {
+      borderTop: "1px solid #e2e8f0",
+      paddingTop: "20px",
+      marginTop: "20px",
+    },
+    sectionHeader: {
+      display: "flex",
+      justifyContent: "space-between",
+      alignItems: "center",
+      cursor: "pointer",
+      fontWeight: 600,
+      fontSize: "16px",
+      color: "#333",
     },
     subText: {
       fontSize: "13px",
@@ -57,50 +72,79 @@ export default function BrandFoundation() {
       <Stepper />
 
       <div
-  style={{
-    width: "1274px",
-    borderRadius: "10px",
-    backgroundColor: "#fff",
-    padding: "24px",
-    boxShadow: "0 0 8px rgba(0,0,0,0.05)",
-    border: "1px solid #ddd",
-    margin: "auto",
-  }}
->
-  {/* Header */}
-  <div
-    style={{
-      fontSize: "20px",
-      fontWeight: "600",
-      color: "#f4b400", // or your preferred yellow shade
-      height: "20px",
-    }}
-  >
-    Brand Foundation
-  </div>
+        style={{
+          width: "1274px",
+          borderRadius: "10px",
+          backgroundColor: "#fff",
+          padding: "24px",
+          boxShadow: "0 0 8px rgba(0,0,0,0.05)",
+          border: "1px solid #ddd",
+          margin: "auto",
+        }}
+      >
+        {/* Header */}
+        <div
+          style={{
+            fontSize: "20px",
+            fontWeight: "600",
+            color: "#f4b400", // or your preferred yellow shade
+            height: "20px",
+          }}
+        >
+          Brand Foundation
+        </div>
 
-  {/* Sections */}
-  <div style={styles.sectionWrapper}>
-    <div style={styles.sectionTitle}>Business Info</div>
-    <BuisnessInfo />
-  </div>
+        {/* Sections */}
+        <div style={styles.sectionWrapper}>
+          <div
+            style={styles.sectionHeader}
+            onClick={() => setBusinessOpen(!isBusinessOpen)}
+          >
+            <span>Business Info</span>
+            {isBusinessOpen ? (
+              <ChevronDown size={18} />
+            ) : (
+              <ChevronRight size={18} />
+            )}
+          </div>
+          {isBusinessOpen && <BuisnessInfo />}
+        </div>
 
-  <div style={styles.sectionWrapper}>
-    <div style={styles.sectionTitle}>Contact Info</div>
-    <ContactInfo />
-  </div>
+        <div style={styles.sectionWrapper}>
+          <div
+            style={styles.sectionHeader}
+            onClick={() => setContactOpen(!isContactOpen)}
+          >
+            <span>Contact Info</span>
+            {isContactOpen ? (
+              <ChevronDown size={18} />
+            ) : (
+              <ChevronRight size={18} />
+            )}
+          </div>
+          {isContactOpen && <ContactInfo />}
+        </div>
 
-  <div style={styles.sectionWrapper}>
-    <div style={styles.sectionTitle}>Brand Colors</div>
-    <BrandColors />
-  </div>
+        <div style={styles.sectionWrapper}>
+          <div
+            style={styles.sectionHeader}
+            onClick={() => setColorsOpen(!isColorsOpen)}
+          >
+            <span>Brand Colors</span>
+            {isColorsOpen ? (
+              <ChevronDown size={18} />
+            ) : (
+              <ChevronRight size={18} />
+            )}
+          </div>
+          {isColorsOpen && <BrandColors />}
+        </div>
 
-  {/* Button */}
-  <div style={styles.nextBtnWrap}>
-    <button style={styles.nextButton}>Next</button>
-  </div>
-</div>
-
+        {/* Button */}
+        <div style={styles.nextBtnWrap}>
+          <button style={styles.nextButton}>Next</button>
+        </div>
+      </div>
     </div>
   );
 }
