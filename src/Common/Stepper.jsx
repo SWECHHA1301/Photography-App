@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Pencil, Star,ChevronRight } from "lucide-react";
+import { Pencil, Star, ChevronRight } from "lucide-react";
 
 const steps = [
   { label: "Brand Foundation", icon: <Pencil size={14} fill="#000000" /> },
@@ -17,29 +17,29 @@ const Stepper = () => {
     if (currentStep < steps.length) setCurrentStep(currentStep + 1);
   };
 
-  const goPrev = () => {
-    if (currentStep > 0) setCurrentStep(currentStep - 1);
-  };
 
   return (
     <div
       style={{
         fontFamily: "'Segoe UI', sans-serif",
-        padding: "20px",
-        backgroundColor: "#e8edee",
+        width: "100%",
+        maxWidth: "1322px",
+        maxHeight: "273px"
       }}
     >
+      {/* Header */}
       <div
         style={{
-          color: "#2a74d1",
+          color: "#2C7A7B",
           fontWeight: "600",
-          fontSize: "14px",
+          fontSize: "24px",
           marginBottom: "20px",
         }}
       >
-        Progress Check Points
+        Setup Your Website
       </div>
 
+      {/* Stepper Track */}
       <div style={{ position: "relative", paddingBottom: "40px" }}>
         <div
           style={{
@@ -52,7 +52,6 @@ const Stepper = () => {
             zIndex: 0,
           }}
         />
-
         <div
           style={{
             display: "flex",
@@ -117,10 +116,10 @@ const Stepper = () => {
           <div
             style={{
               display: "flex",
-              flexDirection: "column",
               alignItems: "center",
-              textAlign: "center",
-              width: "100%",
+              justifyContent: "center",
+              gap: 10,
+              marginLeft: 12,
             }}
           >
             <div
@@ -130,65 +129,85 @@ const Stepper = () => {
                 borderRadius: "50%",
                 backgroundColor: "#d2eeed",
                 border: "2px solid #167b78",
-                color: "#167b78",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                marginBottom: 5,
-                zIndex: 2,
               }}
             >
               <Star
-                size={16}
+                size={20}
                 fill={currentStep === steps.length ? "#2C7A7B" : "none"}
+                color="#167b78"
               />
             </div>
             <div
               style={{
-                fontSize: 12,
-                fontWeight: 600,
+                fontSize: 16,
+                fontWeight: 700,
                 color: "#111",
-                textAlign: "center",
-                lineHeight: "14px",
+                lineHeight: "18px",
               }}
             >
-              Your <br /> Website is Ready
+              Your Website <br /> is Ready
             </div>
           </div>
         </div>
       </div>
 
-      {/* Navigation Buttons */}
-      <div style={{ display: "flex", justifyContent: "flex-end", gap: 10 }}>
-        <button
-          onClick={goPrev}
-          disabled={currentStep === 0}
-          style={{
-            padding: "6px 12px",
-            borderRadius: 5,
-            backgroundColor: "#ccc",
-            border: "none",
-            cursor: "pointer",
-          }}
-        >
-          Previous
-        </button>
-        <button
-          onClick={goNext}
-          disabled={currentStep >= steps.length}
-          style={{
-            padding: "6px 12px",
-            borderRadius: 5,
-            backgroundColor: "#2C7A7B",
-            color: "#fff",
-            border: "none",
-            cursor: "pointer",
-           
-          }}
-        >
-          Next <ChevronRight size={14} />
-        </button>
-      </div>
+      {/* Section Header */}
+      {/* Section Header + Button in Same Row */}
+<div
+  style={{
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    marginBottom: "12px",
+    flexWrap: "wrap", // for small screens
+  }}
+>
+  <div>
+    <div
+      style={{
+        fontSize: "24px",
+        fontWeight: 600,
+        color: "#767676",
+      }}
+    >
+      Start Building Your Photography Portfolio
+    </div>
+    <div
+      style={{
+        fontSize: "16px",
+        fontWeight: 400,
+        color: "#797979",
+        marginTop: "6px",
+      }}
+    >
+      Enter about you and your photography business
+    </div>
+  </div>
+
+  <button
+    onClick={goNext}
+    disabled={currentStep >= steps.length}
+    style={{
+      padding: "8px 16px",
+      borderRadius: 10,
+      backgroundColor: "#2C7A7B",
+      color: "#fff",
+      border: "none",
+      cursor: "pointer",
+      display: "flex",
+      alignItems: "center",
+      gap: 6,
+      height: "40px",
+      marginTop: "10px", // fallback for narrow view
+    }}
+  >
+    Next <ChevronRight size={14} />
+  </button>
+</div>
+
     </div>
   );
 };

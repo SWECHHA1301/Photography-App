@@ -1,12 +1,15 @@
 import logo from './logo.svg';
 import './App.css';
-import Stepper from './Common/Stepper';
-import BrandColors from './BrandColor';
+import BrandFoundation from './BrandFoundation/BrandFoundation';
+import MainContainer from './MainContainer';
+import BrandColors from './BrandFoundation/components/BrandColors';
 
 function App() {
   return (
     <div>
-      <BrandColors/>
+      <MainContainer children={
+        <BrandFoundation />
+      } />
     </div>
   );
 }

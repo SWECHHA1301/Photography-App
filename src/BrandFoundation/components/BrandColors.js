@@ -35,7 +35,6 @@ export default function BrandColors() {
   const styles = {
     container: {
       padding: "20px",
-      border: "1px solid #ccc",
       borderRadius: "4px",
       fontFamily: "sans-serif",
     },
@@ -155,7 +154,6 @@ export default function BrandColors() {
 
   return (
     <div style={styles.container}>
-      <div style={styles.label}>Brand Colors</div>
       <div style={styles.paletteRow}>
         <div style={styles.paletteLabel}>Choose From Color Pallete :</div>
         {colorOptions.map((color, index) => {
