@@ -1,5 +1,5 @@
 import React from 'react'
-import Stepper from './Common/Stepper'
+import Stepper from '../Common/Stepper'
 import SiteStructure from './SiteStructure/SiteStructure'
 
 export default function InputWeb() {

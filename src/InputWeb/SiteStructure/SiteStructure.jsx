@@ -1,5 +1,8 @@
 import React from 'react'
-import Title from '../Common/Title'
+import Title from '../../Common/Title'
+import DropDown from '../../Common/DropDown'
+import PageSelection from './Components/PageSelection'
+import NavigationOrder from './Components/NavigationOrder'
 
 export default function SiteStructure() {
     const styles ={
@@ -13,6 +16,8 @@ export default function SiteStructure() {
     <>
     <div style={styles.constainer}>
     <Title title={"Site Structure"}/>
+    <DropDown heading={"Page Selection"} section={<PageSelection/>}/>
+     <DropDown heading={"Navigation Order"} section={<NavigationOrder/>}/>
     </div>
     </>
   )
