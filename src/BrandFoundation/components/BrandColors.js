@@ -46,7 +46,7 @@ export default function BrandColors() {
       display: "flex",
       alignItems: "center",
       flexWrap: "wrap",
-      gap: "20px",
+      gap: "10px",
     },
     paletteLabel: {
       fontSize: "16px",

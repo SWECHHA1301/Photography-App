@@ -1,4 +1,5 @@
 import React from "react";
+import { ChevronDown } from "lucide-react";
 
 export default function BuisnessInfo() {
   const inputs = [
@@ -14,6 +15,7 @@ export default function BuisnessInfo() {
       display: "flex",
       alignItems: "center",
       marginBottom: "12px",
+      position: "relative", // for select + icon
     },
     label: {
       width: "418px",
@@ -40,6 +42,30 @@ export default function BuisnessInfo() {
       fontSize: "14px",
       resize: "none",
     },
+    selectWrapper: {
+      position: "relative",
+      width: "235px",
+    },
+    select: {
+      width: "235px",
+      height: "40px",
+      padding: "6px 10px",
+      borderRadius: "10px",
+      border: "1px solid #ccc",
+      backgroundColor: "#eef0ec",
+      appearance: "none", // hide default arrow
+      WebkitAppearance: "none",
+      MozAppearance: "none",
+      fontSize: "14px",
+    },
+    chevron: {
+      position: "absolute",
+      right: "10px",
+      top: "50%",
+      transform: "translateY(-50%)",
+      pointerEvents: "none",
+      color: "#555",
+    },
   };
 
   return (
@@ -54,11 +80,19 @@ export default function BuisnessInfo() {
           )}
         </div>
       ))}
+
+      {/* Established Time with Chevron */}
       <div style={styles.row}>
         <div style={styles.label}>Established Time :</div>
-        <select style={{...styles.input, width: "235px"}}>
-          <option>Year</option>
-        </select>
+        <div style={styles.selectWrapper}>
+          <select style={styles.select}>
+            <option>Year</option>
+            <option>2024</option>
+            <option>2023</option>
+            <option>2022</option>
+          </select>
+          <ChevronDown size={16} style={styles.chevron} />
+        </div>
       </div>
     </div>
   );

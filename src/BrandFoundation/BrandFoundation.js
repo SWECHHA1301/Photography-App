@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { ChevronDown, ChevronRight } from "lucide-react";
-import Stepper from "../Common/Stepper";
 import BuisnessInfo from "./components/BuisnessInfo";
 import ContactInfo from "./components/ContactInfo";
 import BrandColors from "./components/BrandColors";
@@ -9,27 +8,7 @@ import DropDown from "../Common/DropDown";
 
 export default function BrandFoundation() {
   const styles = {
-    outerWrapper: {
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "flex-start",
-      minHeight: "100vh",
-      padding: "16px",
-      boxSizing: "border-box",
-    },
-    container: {
-      display: "flex",
-      flexDirection: "column",
-      alignItems: "center",
-      backgroundColor: "#fff",
-      padding: "16px",
-      fontFamily: "sans-serif",
-      borderRadius: "12px",
-      border: "1px solid #ddd",
-      width: "100%",
-      maxWidth: "1322px",
-      boxSizing: "border-box",
-    },
+
     sectionWrapper: {
       borderTop: "1px solid #767676",
       padding: "24px 12px",
@@ -70,9 +49,7 @@ export default function BrandFoundation() {
   };
 
   return (
-    <div style={styles.outerWrapper}>
-      <div style={styles.container}>
-        <Stepper />
+  
 
         <div style={styles.contentBox}>
           <Title title={"Brand Foundation"} />
@@ -83,7 +60,6 @@ export default function BrandFoundation() {
 
           
         </div>
-      </div>
-    </div>
+      
   );
 }
