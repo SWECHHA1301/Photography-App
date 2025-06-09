@@ -8,44 +8,34 @@ import Title from "../Common/Title";
 import DropDown from "../Common/DropDown";
 
 export default function BrandFoundation() {
-  const [isBusinessOpen, setBusinessOpen] = useState(true);
-  const [isContactOpen, setContactOpen] = useState(true);
-  const [isColorsOpen, setColorsOpen] = useState(true);
-
   const styles = {
+    outerWrapper: {
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "flex-start",
+      minHeight: "100vh",
+      padding: "16px",
+      boxSizing: "border-box",
+      backgroundColor: "#f7f7f7",
+    },
     container: {
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
       backgroundColor: "#fff",
-      padding: "24px",
+      padding: "16px",
       fontFamily: "sans-serif",
       borderRadius: "12px",
       border: "1px solid #ddd",
       width: "100%",
-      // maxWidth: "1322px",
-      maxHeight: "1660px",
-    },
-    sectionWrapper: {
-      borderTop: "1px solid #e2e8f0",
-      paddingTop: "20px",
-      marginTop: "20px",
-    },
-    sectionHeader: {
-      display: "flex",
-      justifyContent: "space-between",
-      alignItems: "center",
-      cursor: "pointer",
-      fontWeight: 600,
-      fontSize: "16px",
-      color: "#333",
-    },
-    subText: {
-      fontSize: "13px",
-      color: "#777",
-      marginBottom: "24px",
+      maxWidth: "1322px",
+      boxSizing: "border-box",
     },
     sectionWrapper: {
       borderTop: "1px solid #767676",
-      padding: "24px",
-      // marginTop: "20px",
+      padding: "24px 12px",
+      width: "100%",
+      boxSizing: "border-box",
     },
     sectionTitle: {
       fontSize: "16px",
@@ -57,6 +47,8 @@ export default function BrandFoundation() {
       display: "flex",
       justifyContent: "flex-end",
       marginTop: "32px",
+      width: "100%",
+      flexWrap: "wrap",
     },
     nextButton: {
       padding: "10px 20px",
@@ -66,82 +58,33 @@ export default function BrandFoundation() {
       border: "none",
       borderRadius: "6px",
       cursor: "pointer",
+      margin: "16px",
+    },
+    contentBox: {
+      width: "100%",
+      borderRadius: "10px",
+      backgroundColor: "#fff",
+      boxShadow: "0 0 8px rgba(0,0,0,0.05)",
+      border: "1px solid #767676",
+      boxSizing: "border-box",
     },
   };
 
   return (
-    <div style={styles.container}>
-      <Stepper />
+    <div style={styles.outerWrapper}>
+      <div style={styles.container}>
+        <Stepper />
 
-      <div
-        style={{
-          //  maxWidth: "1274px",
-          width:'100%',
-          borderRadius: "10px",
-          backgroundColor: "#fff",
-          // padding: "24px",
-          boxShadow: "0 0 8px rgba(0,0,0,0.05)",
-          border: "1px solid #767676",
-          margin: "auto",
-        }}
-      >
-        {/* Header */}
-       
-        <Title title={"Brand Foundation"}/>
+        <div style={styles.contentBox}>
+          <Title title={"Brand Foundation"} />
 
-          <DropDown heading={"BusinessInfo"} section={<BuisnessInfo/>}/>
-         <DropDown heading={"Contact Info"} section={<ContactInfo />}/>
-          <DropDown heading={"Brand Colors"} section={<BrandColors />}/>
+          <DropDown heading={"BusinessInfo"} section={<BuisnessInfo />} />
+          <DropDown heading={"Contact Info"} section={<ContactInfo />} />
+          <DropDown heading={"Brand Colors"} section={<BrandColors />} />
 
-        {/* Sections */}
-        {/* <div style={styles.sectionWrapper}>
-          <div
-            style={styles.sectionHeader}
-            onClick={() => setBusinessOpen(!isBusinessOpen)}
-          >
-            <span>Business Info</span>
-            {isBusinessOpen ? (
-              <ChevronDown size={18} />
-            ) : (
-              <ChevronRight size={18} />
-            )}
+          <div style={styles.nextBtnWrap}>
+            <button style={styles.nextButton}>Next</button>
           </div>
-          {isBusinessOpen && <BuisnessInfo />}
-        </div> */}
-    
-        {/* <div style={styles.sectionWrapper}>
-          <div
-            style={styles.sectionHeader}
-            onClick={() => setContactOpen(!isContactOpen)}
-          >
-            <span>Contact Info</span>
-            {isContactOpen ? (
-              <ChevronDown size={18} />
-            ) : (
-              <ChevronRight size={18} />
-            )}
-          </div>
-          {isContactOpen && <ContactInfo />}
-        </div> */}
-
-        {/* <div style={styles.sectionWrapper}>
-          <div
-            style={styles.sectionHeader}
-            onClick={() => setColorsOpen(!isColorsOpen)}
-          >
-            <span>Brand Colors</span>
-            {isColorsOpen ? (
-              <ChevronDown size={18} />
-            ) : (
-              <ChevronRight size={18} />
-            )}
-          </div>
-          {isColorsOpen && <BrandColors />}
-        </div> */}
-
-        {/* Button */}
-        <div style={styles.nextBtnWrap}>
-          <button style={styles.nextButton}>Next</button>
         </div>
       </div>
     </div>

@@ -16,7 +16,7 @@ function App() {
         <BrandFoundation />
       } /> */}
 
-      <InputWeb/>
+     <BrandFoundation />
       {/* <ToggleSwitch/>
       <EyeToggle/> */}
     </div>
