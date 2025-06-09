@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { Pencil, Star, Check, ChevronLeft, ChevronRight } from "lucide-react";
+import { Pencil, Star, ChevronRight, ChevronLeft,Check } from "lucide-react";
 
 const steps = [
-  { label: "Brand Foundation" },
+  { label: "Brand Foundation", icon: <Pencil size={14} fill="#000000" /> },
   { label: "Site Structure" },
   { label: "First Impression" },
   { label: "What You Offer" },
@@ -21,27 +21,30 @@ const Stepper = () => {
     if (currentStep > 0) setCurrentStep(currentStep - 1);
   };
 
+
   return (
     <div
       style={{
         fontFamily: "'Segoe UI', sans-serif",
-        padding: "20px",
-        backgroundColor: "#e8edee",
+        width: "100%",
+        // maxWidth: "1322px",
+        maxHeight: "273px"
       }}
     >
+      {/* Header */}
       <div
         style={{
-          color: "#2a74d1",
+          color: "#2C7A7B",
           fontWeight: "600",
-          fontSize: "14px",
+          fontSize: "24px",
           marginBottom: "20px",
         }}
       >
-        Progress Check Points
+        Setup Your Website
       </div>
 
+      {/* Stepper Track */}
       <div style={{ position: "relative", paddingBottom: "40px" }}>
-        {/* Progress Line */}
         <div
           style={{
             position: "absolute",
@@ -53,8 +56,7 @@ const Stepper = () => {
             zIndex: 0,
           }}
         />
-
-        <div
+          <div
           style={{
             display: "flex",
             alignItems: "flex-start",
@@ -71,13 +73,13 @@ const Stepper = () => {
               bgColor = "#D3E3E4";
               border = "2px solid #147D73";
             } else if (index === currentStep) {
-              icon = <Pencil size={14} color="#F4C430" />;
+              icon = <Pencil size={14} color="black" fill={"black"}/>;
               bgColor = "#fff6dc";
               border = "2px solid #F4C430";
             } else {
-              icon = <span style={{ fontSize: 12, color: "#666" }}>{index + 1}</span>;
+              icon = <span style={{ fontSize: 20, fontWeight:'700',color: "#666" }}>{index + 1}</span>;
               bgColor = "#E3D3D3";
-              border = "2px solid #DF5151";
+              border = "2px solid  #DF5151";
             }
 
             return (
@@ -109,7 +111,7 @@ const Stepper = () => {
                 </div>
                 <div
                   style={{
-                    fontSize: 12,
+                    fontSize: 16,
                     lineHeight: "14px",
                     color: "#333",
                     maxWidth: 80,
@@ -175,45 +177,83 @@ const Stepper = () => {
         </div>
       </div>
 
-      {/* Navigation Buttons */}
-      <div style={{ display: "flex", justifyContent: "center", gap: 10 }}>
+      {/* Section Header */}
+      {/* Section Header + Button in Same Row */}
+<div
+  style={{
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    marginBottom: "12px",
+    flexWrap: "wrap", // for small screens
+  }}
+>
+  <div>
+    <div
+      style={{
+        fontSize: "24px",
+        fontWeight: 600,
+        color: "#767676",
+      }}
+    >
+      Start Building Your Photography Portfolio
+    </div>
+    <div
+      style={{
+        fontSize: "16px",
+        fontWeight: 400,
+        color: "#797979",
+        marginTop: "6px",
+      }}
+    >
+      Enter about you and your photography business
+    </div>
+  </div>
+
+ <div style={{ display: "flex", justifyContent: "flex-end", gap: 10 }}>
         <button
           onClick={goPrev}
           disabled={currentStep === 0}
           style={{
-            padding: "6px 12px",
-            borderRadius: 5,
-            backgroundColor: "#ccc",
-            border: "none",
-            cursor: "pointer",
+           padding: "8px 16px",
+      borderRadius: 10,
+      backgroundColor: "#2C7A7B",
+      color: "#fff",
+      border: "none",
+      cursor: "pointer",
+      display: "flex",
+      alignItems: "center",
+      gap: 6,
+      height: "40px",
+      marginTop: "10px",
           }}
         >
-          Previous
+         <ChevronLeft size={14}/> Previous
         </button>
-        <button
-          onClick={goNext}
-          disabled={currentStep >= steps.length}
-          style={{
-            padding: "0 8px",
-            borderRadius: 10,
-            backgroundColor: "#2C7A7B",
-            width:'70px',
-            height:'36',
-            color: "#fff",
-            border: "none",
-            cursor: "pointer",
-            display :'flex',
-            gap:'12px',
-            alignItems:'center'
-          }}
-        >
-          <p>Next</p>
-          <ChevronRight size={20}/>
-        </button>
-      </div>
+  <button
+    onClick={goNext}
+    disabled={currentStep >= steps.length}
+    style={{
+      padding: "8px 16px",
+      borderRadius: 10,
+      backgroundColor: "#2C7A7B",
+      color: "#fff",
+      border: "none",
+      cursor: "pointer",
+      display: "flex",
+      alignItems: "center",
+      gap: 6,
+      height: "40px",
+      marginTop: "10px", // fallback for narrow view
+    }}
+  >
+    Next <ChevronRight size={14} />
+  </button>
+</div>
+</div>
+
     </div>
   );
 };
 
 export default Stepper;
-
