@@ -9,16 +9,14 @@ import InputWeb from './InputWeb/InputWeb';
 import ToggleSwitch from './Common/ToggleSwitch';
 import EyeToggle from './Common/EyeToggle';
 import InputBar from './Common/InputBar';
+import SiteStructure from './InputWeb/SiteStructure/SiteStructure';
 
 function App() {
   return (
     <div>
-      {/* <MainContainer children={
-        <BrandFoundation />
-      } /> */}
-
-      <InputWeb/>
-      {/* <InputBar/> */}
+      <MainContainer children={
+       <InputWeb/>
+      }/>
     </div>
   );
 }

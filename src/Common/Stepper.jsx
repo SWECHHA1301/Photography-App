@@ -10,24 +10,12 @@ const steps = [
   { label: "Drive Action & Visibility" },
 ];
 
-const Stepper = () => {
-  const [currentStep, setCurrentStep] = useState(0);
-
-  const goNext = () => {
-    if (currentStep < steps.length) setCurrentStep(currentStep + 1);
-  };
-
-  const goPrev = () => {
-    if (currentStep > 0) setCurrentStep(currentStep - 1);
-  };
-
-
-  return (
+const Stepper = ({ currentStep, onNext, onPrev, totalSteps }) => {
+   return (
     <div
       style={{
         fontFamily: "'Segoe UI', sans-serif",
         width: "100%",
-        // maxWidth: "1322px",
         maxHeight: "273px"
       }}
     >
@@ -125,7 +113,6 @@ const Stepper = () => {
             );
           })}
 
-          {/* Final Step (Star) */}
           <div
             style={{
               display: "flex",
@@ -154,7 +141,6 @@ const Stepper = () => {
             >
               <Star
                 size={20}
-                // fill={currentStep === steps.length ? "#2C7A7B" : "none"}
                 fill ={" #167b78"}
               />
             </div>
@@ -178,14 +164,13 @@ const Stepper = () => {
       </div>
 
       {/* Section Header */}
-      {/* Section Header + Button in Same Row */}
 <div
   style={{
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
     marginBottom: "12px",
-    flexWrap: "wrap", // for small screens
+    flexWrap: "wrap", 
   }}
 >
   <div>
@@ -212,14 +197,14 @@ const Stepper = () => {
 
  <div style={{ display: "flex", justifyContent: "flex-end", gap: 10 }}>
         <button
-          onClick={goPrev}
-          disabled={currentStep === 0}
+         onClick={onPrev} disabled={currentStep === 0}
+          // disabled={currentStep === 0}
           style={{
            padding: "8px 16px",
       borderRadius: 10,
-      backgroundColor: "#2C7A7B",
-      color: "#fff",
-      border: "none",
+      backgroundColor: "#fff",
+      color: "#000",
+      border: "2px solid #2C7A7B",
       cursor: "pointer",
       display: "flex",
       alignItems: "center",
@@ -228,11 +213,10 @@ const Stepper = () => {
       marginTop: "10px",
           }}
         >
-         <ChevronLeft size={14}/> Previous
+         <ChevronLeft size={14}/> Prev
         </button>
   <button
-    onClick={goNext}
-    disabled={currentStep >= steps.length}
+   onClick={onNext} disabled={currentStep === totalSteps - 1}
     style={{
       padding: "8px 16px",
       borderRadius: 10,
@@ -244,7 +228,7 @@ const Stepper = () => {
       alignItems: "center",
       gap: 6,
       height: "40px",
-      marginTop: "10px", // fallback for narrow view
+      marginTop: "10px", 
     }}
   >
     Next <ChevronRight size={14} />

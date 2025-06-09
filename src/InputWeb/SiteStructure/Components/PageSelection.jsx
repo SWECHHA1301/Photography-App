@@ -21,7 +21,7 @@ export default function PageSelection() {
         justifyContent:"space-between",
         height:'50px',
         borderBottom:'1px soild #767676',
-        padding:'24px 0'
+        
         },
         content:{
             fontSize:'16px',
