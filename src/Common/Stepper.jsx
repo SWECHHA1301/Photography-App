@@ -27,7 +27,6 @@ const Stepper = () => {
       style={{
         fontFamily: "'Segoe UI', sans-serif",
         width: "100%",
-        // maxWidth: "1322px",
         maxHeight: "273px"
       }}
     >
@@ -125,7 +124,6 @@ const Stepper = () => {
             );
           })}
 
-          {/* Final Step (Star) */}
           <div
             style={{
               display: "flex",
@@ -154,7 +152,6 @@ const Stepper = () => {
             >
               <Star
                 size={20}
-                // fill={currentStep === steps.length ? "#2C7A7B" : "none"}
                 fill ={" #167b78"}
               />
             </div>
@@ -178,14 +175,13 @@ const Stepper = () => {
       </div>
 
       {/* Section Header */}
-      {/* Section Header + Button in Same Row */}
 <div
   style={{
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
     marginBottom: "12px",
-    flexWrap: "wrap", // for small screens
+    flexWrap: "wrap", 
   }}
 >
   <div>
@@ -244,7 +240,7 @@ const Stepper = () => {
       alignItems: "center",
       gap: 6,
       height: "40px",
-      marginTop: "10px", // fallback for narrow view
+      marginTop: "10px", 
     }}
   >
     Next <ChevronRight size={14} />
