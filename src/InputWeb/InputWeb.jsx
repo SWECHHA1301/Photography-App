@@ -9,9 +9,9 @@ export default function InputWeb() {
 
   const styles = {
     mainContainer: {
-      width: '100%',
+      // width: '100%',
       backgroundColor: '#FFFFFF',
-      maxWidth: '1322px',
+      // maxWidth: '1322px',
       margin: '24px',
       padding: '24px',
       display: 'flex',

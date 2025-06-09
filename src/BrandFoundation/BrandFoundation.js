@@ -8,7 +8,6 @@ import DropDown from "../Common/DropDown";
 
 export default function BrandFoundation() {
   const styles = {
-
     sectionWrapper: {
       borderTop: "1px solid #767676",
       padding: "24px 12px",
@@ -49,17 +48,12 @@ export default function BrandFoundation() {
   };
 
   return (
-  
+    <div style={styles.contentBox}>
+      <Title title={"Brand Foundation"} />
 
-        <div style={styles.contentBox}>
-          <Title title={"Brand Foundation"} />
-
-          <DropDown heading={"BusinessInfo"} section={<BuisnessInfo />} />
-          <DropDown heading={"Contact Info"} section={<ContactInfo />} />
-          <DropDown heading={"Brand Colors"} section={<BrandColors />} />
-
-          
-        </div>
-      
+      <DropDown heading={"BusinessInfo"} section={<BuisnessInfo />} />
+      <DropDown heading={"Contact Info"} section={<ContactInfo />} />
+      <DropDown heading={"Brand Colors"} section={<BrandColors />} />
+    </div>
   );
 }
