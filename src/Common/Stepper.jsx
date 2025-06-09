@@ -228,7 +228,7 @@ const Stepper = () => {
       marginTop: "10px",
           }}
         >
-         <ChevronLeft size={14}/> Previous
+         <ChevronLeft size={14}/> Prev
         </button>
   <button
     onClick={goNext}

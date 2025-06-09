@@ -16,7 +16,6 @@ export default function BrandFoundation() {
       minHeight: "100vh",
       padding: "16px",
       boxSizing: "border-box",
-      backgroundColor: "#f7f7f7",
     },
     container: {
       display: "flex",
@@ -82,9 +81,7 @@ export default function BrandFoundation() {
           <DropDown heading={"Contact Info"} section={<ContactInfo />} />
           <DropDown heading={"Brand Colors"} section={<BrandColors />} />
 
-          <div style={styles.nextBtnWrap}>
-            <button style={styles.nextButton}>Next</button>
-          </div>
+          
         </div>
       </div>
     </div>

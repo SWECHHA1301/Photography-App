@@ -45,11 +45,14 @@ export default function BrandColors() {
     paletteRow: {
       display: "flex",
       alignItems: "center",
+      flexWrap: "wrap",
       gap: "20px",
     },
     paletteLabel: {
-      fontSize: "14px",
+      fontSize: "16px",
       color: "#555",
+      width: "390px", 
+      marginBottom: "10px", 
     },
     colorCircleWrapper: (isSelected) => ({
       cursor: "pointer",
@@ -61,19 +64,19 @@ export default function BrandColors() {
       transition: "all 0.2s ease-in-out",
     }),
     infoBox: {
-      marginTop: "16px",
+      margin: "16px",
       backgroundColor: "#F4F2F2",
       border: "1px solid #ddd",
       borderRadius: "10px",
-      width: "222px",
-      height: "136px",
+      width: "100%", 
+      maxWidth: "222px",
       boxShadow: "0 2px 6px rgba(0,0,0,0.1)",
       display: "flex",
       flexDirection: "column",
       overflow: "hidden",
       fontFamily: "sans-serif",
+      
     },
-
     infoHeader: {
       fontSize: "12px",
       fontWeight: "400",
@@ -81,7 +84,6 @@ export default function BrandColors() {
       borderBottom: "1px solid #ccc",
       backgroundColor: "#f5f5f5",
     },
-
     hexDisplay: {
       backgroundColor: selectedColor,
       color: "white",
@@ -91,16 +93,16 @@ export default function BrandColors() {
       padding: "6px 0",
       borderRadius: "20px",
       margin: "10px auto 6px",
-      width: "186px",
+      width: "80%", 
     },
-
     infoContent: {
       display: "flex",
       padding: "0 10px",
       alignItems: "flex-start",
       gap: "10px",
+      flexWrap: "wrap", 
+      marginBottom: "10px",
     },
-
     colorPreview: {
       backgroundColor: "#fff",
       padding: "6px",
@@ -109,12 +111,11 @@ export default function BrandColors() {
       flexDirection: "column",
       alignItems: "flex-start",
       textAlign: "left",
-      height: "51px",
-      width: "49px",
+      height: "auto",
+      width: "auto",
       boxSizing: "border-box",
       justifyContent: "flex-start",
     },
-
     colorCircle: (color) => ({
       height: "13px",
       width: "41px",
@@ -122,28 +123,24 @@ export default function BrandColors() {
       borderRadius: "999px",
       marginBottom: "8px",
     }),
-
     colorLines: {
       display: "flex",
       flexDirection: "column",
       gap: "6px",
       alignItems: "flex-start",
     },
-
     line1: {
       height: "2px",
       width: "14px",
       backgroundColor: "#888",
       borderRadius: "1px",
     },
-
     line: {
       height: "2px",
       width: "18px",
       backgroundColor: "#555",
       borderRadius: "1px",
     },
-
     description: {
       fontSize: "12px",
       lineHeight: "1.3",
@@ -191,7 +188,10 @@ export default function BrandColors() {
             </div>
 
             <div style={styles.description}>
-              {colorOptions.find((c) => c.hex === selectedColor)?.description}
+              {
+                colorOptions.find((c) => c.hex === selectedColor)
+                  ?.description
+              }
             </div>
           </div>
         </div>
