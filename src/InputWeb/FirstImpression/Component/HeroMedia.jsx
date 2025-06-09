@@ -14,7 +14,7 @@ export default function HeroMedia() {
              width:'100%',
             maxWidth:'200px',
               }}>Upload Hero Media</label>
-              <p>:</p>
+              <p style={{maxWidth:'50px',width:'100%'}}>:</p>
       <div style={{
         border: '1px solid #767676',
         padding: '10px 16px',

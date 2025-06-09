@@ -32,7 +32,7 @@ export default function InputBar({ label, holder,customStyle = {} }) {
     <>
     <div style={styles.container}>
       <label style={styles.title}>{label}</label>
-      <p>:</p>
+      <p style={{maxWidth:'50px',width:'100%'}}>:</p>
       <input type="text" placeholder={holder} style={styles.inputcontainer}/>
     </div>
     </>
