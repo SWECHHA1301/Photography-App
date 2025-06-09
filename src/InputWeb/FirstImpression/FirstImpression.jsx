@@ -3,6 +3,7 @@ import Title from '../../Common/Title'
 import DropDown from '../../Common/DropDown'
 import HeroSection from './Component/HeroSection'
 
+
 export default function FirstImpression() {
       const styles ={
         constainer:{
@@ -14,8 +15,9 @@ export default function FirstImpression() {
   return (
    <>
       <div style={styles.constainer}>
-      <Title title={"Site Structure"}/>
+      <Title title={"First Impression"}/>
       <DropDown heading={"Hero Section"} section={<HeroSection/>}/>
+     
       </div>
       </>
   )

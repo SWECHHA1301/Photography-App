@@ -8,6 +8,7 @@ import Stepper from "./Common/Stepper";
 import InputWeb from './InputWeb/InputWeb';
 import ToggleSwitch from './Common/ToggleSwitch';
 import EyeToggle from './Common/EyeToggle';
+import InputBar from './Common/InputBar';
 
 function App() {
   return (
@@ -17,8 +18,7 @@ function App() {
       } /> */}
 
       <InputWeb/>
-      {/* <ToggleSwitch/>
-      <EyeToggle/> */}
+      {/* <InputBar/> */}
     </div>
   );
 }

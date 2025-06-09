@@ -22,8 +22,9 @@ export default function InputWeb() {
     <>
     <div style={styles.mainCotainer}>
          <Stepper/>
+         
          <FirstImpression/>
-         {/* <SiteStructure/> */}
+         <SiteStructure/>
     </div>
     </>
   )
