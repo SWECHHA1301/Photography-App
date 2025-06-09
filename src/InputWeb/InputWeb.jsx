@@ -1,6 +1,7 @@
 import React from 'react'
 import Stepper from '../Common/Stepper'
 import SiteStructure from './SiteStructure/SiteStructure'
+import FirstImpression from './FirstImpression/FirstImpression'
 
 export default function InputWeb() {
     const styles ={
@@ -21,7 +22,8 @@ export default function InputWeb() {
     <>
     <div style={styles.mainCotainer}>
          <Stepper/>
-         <SiteStructure/>
+         <FirstImpression/>
+         {/* <SiteStructure/> */}
     </div>
     </>
   )
