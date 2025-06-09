@@ -13,11 +13,11 @@ import SiteStructure from './InputWeb/SiteStructure/SiteStructure';
 function App() {
   return (
     <div>
-      <MainContainer children={
+      {/* <MainContainer children={
        <InputWeb/>
-      } />
+      } /> */}
 
-     {/* <InputWeb/> */}
+     <InputWeb/>
       {/* <ToggleSwitch/>
       <EyeToggle/> */}
     </div>
