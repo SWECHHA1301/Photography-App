@@ -6,9 +6,9 @@ import PreviousBtn from "./Buttons/PreviousBtn";
 
 const styles = {
   container: {
-    fontFamily: "'Segoe UI', sans-serif",
     width: "100%",
   },
+  
   header: {
     color: "#2C7A7B",
     fontWeight: "600",
