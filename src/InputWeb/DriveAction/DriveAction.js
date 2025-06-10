@@ -1,14 +1,13 @@
 import React, { useState } from "react";
 import { ChevronDown, ChevronRight } from "lucide-react";
-import BuisnessInfo from "./components/BuisnessInfo";
-import ContactInfo from "./components/ContactInfo";
-import BrandColors from "./components/BrandColors";
-import Title from "../Common/Title";
-import DropDown from "../Common/DropDown";
+import Testimonial from "./components/Testimonials";
+import CallToActions from "./components/CallToActions";
+import SEO from "./components/SEO";
+import Title from "../../Common/Titles/Title";
+import DropDown from "../../Common/DropDown";
 
-export default function BrandFoundation() {
+export default function DriveAction() {
   const styles = {
-
     sectionWrapper: {
       borderTop: "1px solid #767676",
       padding: "24px 12px",
@@ -49,17 +48,12 @@ export default function BrandFoundation() {
   };
 
   return (
-  
+    <div style={styles.contentBox}>
+      <Title title={"Drive Action And Visibility"} />
 
-        <div style={styles.contentBox}>
-          <Title title={"Brand Foundation"} />
-
-          <DropDown heading={"BusinessInfo"} section={<BuisnessInfo />} />
-          <DropDown heading={"Contact Info"} section={<ContactInfo />} />
-          <DropDown heading={"Brand Colors"} section={<BrandColors />} />
-
-          
-        </div>
-      
+      <DropDown heading={"Testimonial"} section={<Testimonial />} />
+      <DropDown heading={"Call To Actions"} section={<CallToActions />} />
+      <DropDown heading={"SEO"} section={<SEO />} />
+    </div>
   );
 }

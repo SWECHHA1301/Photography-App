@@ -1,5 +1,5 @@
 import React from 'react'
-import Title from '../../Common/Title'
+import Title from '../../Common/Titles/Title'
 import DropDown from '../../Common/DropDown'
 import HeroSection from './Component/HeroSection'
 

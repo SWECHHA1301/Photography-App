@@ -3,25 +3,21 @@ import React from 'react'
 const MainContainer = ({ children }) => {
     return (
         <div>
-          
-            <div style={{
-                display: 'flex',
-                flexDirection: 'row',
-            }}>
-                
+
+           
+
                 <div style={{
                     height: '92vh',
-                    overflowY: 'scroll',
                     width: '100%',
                     padding: "24px",
+                    overflowX: 'hidden',
                 }}>
                     {
                         children
                     }
                 </div>
             </div>
-        </div>
-    )
+       )
 }
 
 export default MainContainer
