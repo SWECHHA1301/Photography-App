@@ -4,7 +4,7 @@ export default function LayoutOptions() {
   const [selectedLayout, setSelectedLayout] = useState('2x2');
 
   const radioStyle = {
-    accentColor: '#007bff', // This sets the blue color on select
+    accentColor: '#2C7A7B', // This sets the blue color on select
   };
 
   return (

@@ -9,8 +9,9 @@ const MainContainer = ({ children }) => {
                 <div style={{
                   
                     width: '100%',
-                   
-                    
+                    // padding: "24px",
+                    overflowX: 'hidden',
+
                 }}>
                     {
                         children

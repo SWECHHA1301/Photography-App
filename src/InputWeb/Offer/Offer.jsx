@@ -14,7 +14,7 @@ export default function Offer() {
   return (
     <>
      <div style={styles.constainer}>
-          <Title title={"First Impression"}/>
+          <Title title={"What You Offer"}/>
           <DropDown heading={"Service /Specialities "} section={<Service/>}/>
          <DropDown heading={"State"} section={<State/>}/>
           </div>
