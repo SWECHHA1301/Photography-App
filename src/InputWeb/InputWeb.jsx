@@ -3,7 +3,9 @@ import Stepper from '../Common/Stepper';
 import SiteStructure from './SiteStructure/SiteStructure';
 import FirstImpression from './FirstImpression/FirstImpression';
 import BrandFoundation from './BrandFoundation/BrandFoundation';
+import Offer from './Offer/Offer';
 import DriveAction from './DriveAction/DriveAction';
+
 
 export default function InputWeb() {
   const [currentStep, setCurrentStep] = useState(0);
@@ -27,7 +29,10 @@ export default function InputWeb() {
     <BrandFoundation />,
     <SiteStructure />,
     <FirstImpression />,
+
+    <Offer/>,
     <DriveAction />,
+
   ];
 
   // Handlers
