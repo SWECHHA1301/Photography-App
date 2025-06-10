@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import InputBar from '../../../Common/InputBar';
 import ColorPallete from '../../../Common/ColorPallete';
+import Textarea from '../../../Common/Textarea';
 
 export default function WhatYouOffer() {
   const [services, setServices] = useState([]); // start with no services
@@ -88,12 +89,20 @@ export default function WhatYouOffer() {
             value={activeService.title}
             onChange={e => handleChange(activeIndex, 'title', e.target.value)}
           />
-          <InputBar
+
+          <Textarea   label="Description"
+            holder="Description" 
+            value={activeService.description}
+            onChange={e => handleChange(activeIndex, 'description', e.target.value)}
+            customStyle={{
+              height:'92px'
+            }}/>
+          {/* <InputBar
             label="Description"
             holder="Description"
             value={activeService.description}
             onChange={e => handleChange(activeIndex, 'description', e.target.value)}
-          />
+          /> */}
           <InputBar
             label="Icon"
             holder="e.g. heart"

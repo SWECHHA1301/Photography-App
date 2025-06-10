@@ -7,10 +7,11 @@ const MainContainer = ({ children }) => {
            
 
                 <div style={{
-                    height: '92vh',
+                  
                     width: '100%',
                     // padding: "24px",
                     overflowX: 'hidden',
+
                 }}>
                     {
                         children

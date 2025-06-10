@@ -49,7 +49,7 @@ export default function CallToActions() {
   };
 
   const styles = {
-    
+  
     row: {
       display: "flex",
       alignItems: "center",
@@ -79,7 +79,6 @@ export default function CallToActions() {
       backgroundColor: "#eef0ec",
       fontFamily: "inherit",
       fontSize: "14px",
-      resize: "none",
     },
     selectWrapper: {
       position: "relative",

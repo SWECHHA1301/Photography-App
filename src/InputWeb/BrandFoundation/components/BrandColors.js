@@ -75,7 +75,6 @@ export default function BrandColors() {
       flexDirection: "column",
       overflow: "hidden",
       fontFamily: "sans-serif",
-      
     },
     infoHeader: {
       fontSize: "12px",
@@ -102,6 +101,7 @@ export default function BrandColors() {
       gap: "10px",
       flexWrap: "wrap", 
       marginBottom: "10px",
+     
     },
     colorPreview: {
       backgroundColor: "#fff",
