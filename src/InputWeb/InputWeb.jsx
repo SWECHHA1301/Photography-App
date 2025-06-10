@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Stepper from '../Common/Stepper';
 import SiteStructure from './SiteStructure/SiteStructure';
 import FirstImpression from './FirstImpression/FirstImpression';
-import BrandFoundation from '../BrandFoundation/BrandFoundation';
+import BrandFoundation from './BrandFoundation/BrandFoundation';
 
 export default function InputWeb() {
   const [currentStep, setCurrentStep] = useState(0);

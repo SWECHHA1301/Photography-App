@@ -1,5 +1,5 @@
 import React from 'react'
-import EyeToggle from "../../../Common/EyeToggle"
+import EyeToggle from "../../../Common/Toggles/EyeToggle"
 import { GripVertical } from 'lucide-react'
 export default function NavigationOrder() {
 

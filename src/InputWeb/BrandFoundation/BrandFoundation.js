@@ -3,8 +3,8 @@ import { ChevronDown, ChevronRight } from "lucide-react";
 import BuisnessInfo from "./components/BuisnessInfo";
 import ContactInfo from "./components/ContactInfo";
 import BrandColors from "./components/BrandColors";
-import Title from "../Common/Title";
-import DropDown from "../Common/DropDown";
+import Title from "../../Common/Titles/Title";
+import DropDown from "../../Common/DropDown";
 
 export default function BrandFoundation() {
   const styles = {
