@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Heart } from 'lucide-react';
 import InputBar from '../../../Common/InputBar';
 import ColorPallete from '../../../Common/ColorPallete';
 

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ChevronDown, Star } from "lucide-react";
+import { ChevronDown} from "lucide-react";
 
 export default function Testimonial() {
   const [rating, setRating] = useState(0);
