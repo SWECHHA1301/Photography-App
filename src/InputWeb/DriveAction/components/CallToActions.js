@@ -49,6 +49,7 @@ export default function CallToActions() {
   };
 
   const styles = {
+    
     row: {
       display: "flex",
       alignItems: "center",
@@ -105,9 +106,9 @@ export default function CallToActions() {
       color: "#555",
     },
     counter: {
-      position: "absolute",
+     position: "absolute",
       right: "10px",
-      bottom: "10px",
+      top: "25px",
       fontSize: "12px",
       color: "#888",
     },
@@ -117,7 +118,7 @@ export default function CallToActions() {
   };
 
   return (
-    <div>
+    <div style={styles.container}>
       {fields.map((field, index) => (
         <div key={index} style={styles.row}>
           <div style={styles.label}>{field.label}:</div>
@@ -159,7 +160,7 @@ export default function CallToActions() {
                   onChange={handleChange}
                 />
                 {field.maxLength && (
-                  <div style={{...styles.counter, bottom: "auto", top: "8px"}}>
+                  <div style={{...styles.counter, bottom: "auto"}}>
                     {formData[field.name]?.length || 0}/{field.maxLength}
                   </div>
                 )}

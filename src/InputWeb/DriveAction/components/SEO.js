@@ -35,7 +35,8 @@ export default function SEO() {
       label: "Secondary Button", 
       type: "input",
       name: "secondaryButton",
-      placeholder: "eg. View Portfolio"
+      placeholder: "eg. View Portfolio",
+      maxLength: 30  // Added maxLength for Secondary Button
     },
   ];
 
@@ -110,8 +111,16 @@ export default function SEO() {
       fontSize: "12px",
       color: "#888",
     },
+    inputCounter: {
+      position: "absolute",
+      right: "10px",
+      top: "25px",
+      fontSize: "12px",
+      color: "#888",
+    },
     inputWrapper: {
       position: "relative",
+      display: "inline-block"
     }
   };
 
@@ -162,7 +171,7 @@ export default function SEO() {
                   onChange={handleChange}
                 />
                 {field.maxLength && (
-                  <div style={{...styles.counter, bottom: "auto", top: "8px"}}>
+                  <div style={styles.inputCounter}>
                     {formData[field.name]?.length || 0}/{field.maxLength}
                   </div>
                 )}
