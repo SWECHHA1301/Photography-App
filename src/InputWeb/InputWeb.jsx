@@ -5,6 +5,7 @@ import FirstImpression from './FirstImpression/FirstImpression';
 import BrandFoundation from './BrandFoundation/BrandFoundation';
 import Offer from './Offer/Offer';
 import DriveAction from './DriveAction/DriveAction';
+import AboutPage from './TellYourStory/AboutPage';
 
 
 export default function InputWeb() {
@@ -31,6 +32,7 @@ export default function InputWeb() {
     <FirstImpression />,
 
     <Offer/>,
+    <AboutPage />,
     <DriveAction />,
 
   ];
