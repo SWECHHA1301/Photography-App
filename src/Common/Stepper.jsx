@@ -1,6 +1,6 @@
-import React from "react";
-import { Pencil, Star, ChevronRight, ChevronLeft, Check } from "lucide-react";
-import MainTitle from ".//Titles/MainTitle";
+import React, { useRef, useEffect } from "react";
+import { Pencil, Star, ChevronRight, Check } from "lucide-react";
+import MainTitle from "./Titles/MainTitle";
 import NextBtn from "./Buttons/NextBtn";
 import PreviousBtn from "./Buttons/PreviousBtn";
 
@@ -19,6 +19,8 @@ const styles = {
     position: "relative",
     paddingBottom: "40px",
     marginBottom: "30px",
+    overflowY: "hidden",
+    overflowX: "auto", 
   },
   trackLine: {
     position: "absolute",
@@ -35,6 +37,7 @@ const styles = {
     justifyContent: "space-between",
     position: "relative",
     zIndex: 1,
+    minWidth: "700px",
   },
   stepWrapper: {
     display: "flex",
@@ -46,7 +49,7 @@ const styles = {
   },
   stepLabel: {
     fontSize: 16,
-    fontWeight:'400',
+    fontWeight: "400",
     lineHeight: "20px",
     color: "#333",
     maxWidth: 90,
@@ -58,24 +61,23 @@ const styles = {
     justifyContent: "flex-start",
     alignSelf: "center",
   },
-finalStepWrapper: {
-  display: "flex",
-  flexDirection: "row", // already fine
-  gap: "12px",
-  alignItems: "center",
-  justifyContent: "center",
-  textAlign: "center",
-  width: "100%",
-  position: "relative",
- 
-},
+  finalStepWrapper: {
+    display: "flex",
+    flexDirection: "row", // already fine
+    gap: "12px",
+    alignItems: "center",
+    justifyContent: "center",
+    textAlign: "center",
+    width: "100%",
+    position: "relative",
+  },
 
   finalStepCircle: {
     width: 60,
-  height: 60,
-  minWidth: 60,      
-  minHeight: 60,     
-  flexShrink: 0,
+    height: 60,
+    minWidth: 60,
+    minHeight: 60,
+    flexShrink: 0,
     borderRadius: "50%",
     backgroundColor: "#D3E3E4",
     border: "2px solid #167b78",
@@ -106,13 +108,26 @@ const steps = [
 ];
 
 const Stepper = ({ currentStep, onNext, onPrev, totalSteps }) => {
+  const stepRefs = useRef([]);
+
+  useEffect(() => {
+    // Scroll current step into view
+    if (stepRefs.current[currentStep]) {
+      stepRefs.current[currentStep].scrollIntoView({
+        behavior: "smooth",
+        inline: "center",
+        block: "nearest",
+      });
+    }
+  }, [currentStep]);
+
   return (
     <div style={styles.container}>
       <div style={styles.header}>Setup Your Website</div>
 
       <div style={styles.trackWrapper}>
         <div style={styles.trackLine} />
-        
+
         <div style={styles.stepperContent}>
           {steps.map((step, index) => {
             let icon, bgColor, border;
@@ -127,7 +142,9 @@ const Stepper = ({ currentStep, onNext, onPrev, totalSteps }) => {
               border = "2px solid #F4C430";
             } else {
               icon = (
-                <span style={{ fontSize: 20, fontWeight: "700", color: "#666" }}>
+                <span
+                  style={{ fontSize: 20, fontWeight: "700", color: "#666" }}
+                >
                   {index + 1}
                 </span>
               );
@@ -136,7 +153,11 @@ const Stepper = ({ currentStep, onNext, onPrev, totalSteps }) => {
             }
 
             return (
-              <div key={index} style={styles.stepWrapper}>
+              <div
+                key={index}
+                ref={(el) => (stepRefs.current[index] = el)}
+                style={styles.stepWrapper}
+              >
                 <div
                   style={{
                     width: 40,
@@ -157,39 +178,39 @@ const Stepper = ({ currentStep, onNext, onPrev, totalSteps }) => {
             );
           })}
 
-        <div style={styles.finalStepWrapper}>
-  <div style={styles.finalStepCircle}>
-    <Star size={30} fill={"#167b78"} />
-  </div>
-  <div style={{ fontSize: 14, fontWeight: 600, color: "#111",
- }}>
-    Your Website is Ready
-  </div>
-</div>
-
+          <div style={styles.finalStepWrapper}>
+            <div style={styles.finalStepCircle}>
+              <Star size={30} fill={"#167b78"} />
+            </div>
+            <div
+              style={{
+                fontSize: 14,
+                fontWeight: 600,
+                color: "#111",
+              }}
+            >
+              Your Website is Ready
+            </div>
+          </div>
         </div>
-        
-      </div>
-       
-       {/* header section */}
-      <div style={{
-        display:'flex',
-        justifyContent:'space-between',
-        alignItems:'flex-end',
-        gap:'24px',
-      }}>
-      <MainTitle />
-
-      <div style={{
-        display:'flex',
-        gap:'16px',
-      }}>
-      <PreviousBtn onClick={onPrev} disabled={currentStep === 0} />
-      <NextBtn onClick={onNext} disabled={currentStep === totalSteps - 1} />
-      </div>
-      
       </div>
 
+      {/* Header and Buttons */}
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "flex-end",
+          gap: "24px",
+        }}
+      >
+        <MainTitle />
+
+        <div style={{ display: "flex", gap: "16px" }}>
+          {currentStep !== 0 && <PreviousBtn onClick={onPrev} />}
+          <NextBtn onClick={onNext} disabled={currentStep === totalSteps - 1} />
+        </div>
+      </div>
     </div>
   );
 };
