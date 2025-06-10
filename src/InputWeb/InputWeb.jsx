@@ -19,6 +19,7 @@ export default function InputWeb() {
       flexDirection: 'column',
       alignItems: 'center',
       borderRadius: '20px',
+      overflow: 'hidden',
     },
   };
 
