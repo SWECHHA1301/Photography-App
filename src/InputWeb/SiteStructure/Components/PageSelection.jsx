@@ -20,7 +20,8 @@ export default function PageSelection() {
         alignItems:'center',
         justifyContent:"space-between",
         height:'50px',
-        borderBottom:'1px soild #767676'
+        borderBottom:'1px soild #767676',
+        
         },
         content:{
             fontSize:'16px',

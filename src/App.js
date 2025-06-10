@@ -8,18 +8,16 @@ import Stepper from "./Common/Stepper";
 import InputWeb from './InputWeb/InputWeb';
 import ToggleSwitch from './Common/ToggleSwitch';
 import EyeToggle from './Common/EyeToggle';
+import InputBar from './Common/InputBar';
 import SiteStructure from './InputWeb/SiteStructure/SiteStructure';
 
 function App() {
   return (
     <div>
-      {/* <MainContainer children={
-       <InputWeb/>
-      } /> */}
-
-     <InputWeb/>
-      {/* <ToggleSwitch/>
-      <EyeToggle/> */}
+    <MainContainer children={
+         <InputWeb/>
+      }/>
+    
     </div>
   );
 }

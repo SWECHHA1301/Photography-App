@@ -19,6 +19,7 @@ export default function NavigationOrder() {
         alignItems:'center',
         justifyContent:"space-between",
         height:'64px',
+        
         // borderBottom:'1px soild #767676'
         },
 

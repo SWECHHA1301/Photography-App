@@ -10,19 +10,8 @@ const steps = [
   { label: "Drive Action & Visibility" },
 ];
 
-const Stepper = () => {
-  const [currentStep, setCurrentStep] = useState(0);
-
-  const goNext = () => {
-    if (currentStep < steps.length) setCurrentStep(currentStep + 1);
-  };
-
-  const goPrev = () => {
-    if (currentStep > 0) setCurrentStep(currentStep - 1);
-  };
-
-
-  return (
+const Stepper = ({ currentStep, onNext, onPrev, totalSteps }) => {
+   return (
     <div
       style={{
         fontFamily: "'Segoe UI', sans-serif",
@@ -208,14 +197,14 @@ const Stepper = () => {
 
  <div style={{ display: "flex", justifyContent: "flex-end", gap: 10 }}>
         <button
-          onClick={goPrev}
-          disabled={currentStep === 0}
+         onClick={onPrev} disabled={currentStep === 0}
+          // disabled={currentStep === 0}
           style={{
            padding: "8px 16px",
       borderRadius: 10,
-      backgroundColor: "#2C7A7B",
-      color: "#fff",
-      border: "none",
+      backgroundColor: "#fff",
+      color: "#000",
+      border: "2px solid #2C7A7B",
       cursor: "pointer",
       display: "flex",
       alignItems: "center",
@@ -227,8 +216,7 @@ const Stepper = () => {
          <ChevronLeft size={14}/> Prev
         </button>
   <button
-    onClick={goNext}
-    disabled={currentStep >= steps.length}
+   onClick={onNext} disabled={currentStep === totalSteps - 1}
     style={{
       padding: "8px 16px",
       borderRadius: 10,

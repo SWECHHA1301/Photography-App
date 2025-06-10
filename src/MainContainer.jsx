@@ -7,7 +7,6 @@ const MainContainer = ({ children }) => {
             <div style={{
                 display: 'flex',
                 flexDirection: 'row',
-                padding: '5px'
             }}>
                 
                 <div style={{
