@@ -1,28 +1,36 @@
-import React from 'react'
+import React from 'react';
 
-export default function ViewPortfolio({ViewStyle={}}) {
+export default function ViewPortfolio({ holder = "View Portfolio" }) {
+  const inputStyle = {
+    backgroundColor: '#2C7A7B',
+    borderRadius: '10px',
+    maxWidth: '156px',
+    width: '100%',
+    height: '30px',
+    fontSize: '16px',
+    fontWeight: '400',
+    color: '#fff',
+    border: 'none',
+  };
+
   return (
     <>
-    <button style={{
-        backgroundColor:'#2C7A7B',
-        borderRadius:'10px',
-        border:'none',
-        maxWidth:'156px',
-        width:'100%',
-        height:'30px',
-        fontSize:'20px',
-        fontWeight:'400',
-        color:'#fff',
-        display:'flex',
-        alignItems:'center',
-        padding:'0 11px',
-        justifyContent:'space-around',
-        ...ViewStyle,
-    }}>
-    
-        View Portfolio
-    
-    </button>
+     <style>
+        {`
+          #custom-placeholder::placeholder {
+            color: #ffffff;
+            opacity: 1;
+            text-align :center;
+          }
+        `}
+      </style>
+      <input
+      id="custom-placeholder"
+        type="text"
+        placeholder={holder}
+        style={inputStyle}
+      />
     </>
-  )
+  );
 }
+

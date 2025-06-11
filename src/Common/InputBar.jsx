@@ -1,50 +1,67 @@
 import React from 'react';
 
-export default function InputBar({ label, holder,customStyle = {} ,Style = {},divStyle={}, value, onChange}  ) {
-    const styles = {
-        title:{
-            fontSize:'16px',
-            fontWeight:'400',
-             width:'100%',
-             flex:'0.2',
-             
-            // maxWidth:'200px',
-          
-        },
-        inputcontainer:{
-            height:'41px',
-             flex:'0.34',
-            // maxWidth:'415px',
-             width:'100%',
-            backgroundColor:'#E9EEEA',
-            borderRadius:'10px',
-            border:'1px solid #767676',
-               fontSize:'16px',
-            fontWeight:'400',
-            padding:'0 16px',
-              ...customStyle, 
-              
-        },
-        container:{
-          display:'flex',
-          // justifyContent:'space-between',
-          width:'100%',
-          // maxWidth:'850px',
-          alignItems:'center',
-          ...Style,
-        }
-    }
+export default function InputBar({
+  label,
+  holder,
+  customStyle = {},
+  Style = {},
+  divStyle = {},
+  value,
+  onChange,
+}) {
+  const styles = {
+    container: {
+      display: 'flex',
+      flexWrap: 'wrap',
+      alignItems: 'center',
+      width: '100%',
+      gap: '8px',
+      ...Style,
+    },
+    title: {
+      fontSize: '16px',
+      fontWeight: '400',
+     flex: '0.3',
+      // minWidth: '250px',
+      display: 'flex',
+      alignItems: 'center',
+      ...divStyle,
+      gap:'20px'
+    
+    },
+    inputContainer: {
+      height: '41px',
+      flex: '1 1 auto',
+      backgroundColor: '#E9EEEA',
+      borderRadius: '10px',
+      border: '1px solid #767676',
+      fontSize: '16px',
+      fontWeight: '400',
+      padding: '0 16px',
+      width: '100%',
+    
+      ...customStyle,
+    },
+  };
+
   return (
-    <>
     <div style={styles.container}>
-      <label style={styles.title}>{label}</label>
-      <p style={{width:'100%', flex:'0.1',...divStyle}}>:</p>
-      <input type="text" placeholder={holder} style={styles.inputcontainer}
-       value={value}
+      <label style={styles.title}>
+        <span style={{
+          flex:'3',
+        }}>{label}</span>
+        <span style={{flex:'1',}}>:</span>
+      </label>
+
+      <input
+        type="text"
+        placeholder={holder}
+        style={styles.inputContainer}
+        value={value}
         onChange={onChange}
       />
     </div>
-    </>
   );
 }
+
 

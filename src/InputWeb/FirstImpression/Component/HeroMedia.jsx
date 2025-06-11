@@ -1,45 +1,75 @@
-import React from 'react'
+import React, { useRef, useState } from 'react';
 
 export default function HeroMedia() {
-  const containerStyle = {
-    display: 'flex',
-    // justifyContent: 'space-between',
-    width: '100%',
-    // maxWidth: '850px',
-    alignItems: 'flex-start',
+  const fileInputRef = useRef(null);
+  const [fileName, setFileName] = useState('');
+  const [imagePreview, setImagePreview] = useState(null);
+
+  const handleBrowseClick = () => {
+    fileInputRef.current.click();
   };
 
-  const labelStyle = {
-    fontSize: '16px',
-    fontWeight: '400',
-    width: '100%',
-     flex:'0.2',
-       padding:'19px 0',
-    // maxWidth: '200px',
+  const handleFileChange = (event) => {
+    const file = event.target.files[0];
+    if (file && file.type.startsWith('image/')) {
+      setFileName(file.name);
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setImagePreview(reader.result);
+      };
+      reader.readAsDataURL(file);
+    }
   };
 
-  const colonStyle = {
-    // maxWidth: '50px',
-  
-    flex:'0.1',
-    width: '100%',
+  const handleRemoveImage = () => {
+    setFileName('');
+    setImagePreview(null);
+    fileInputRef.current.value = null;
   };
+const containerStyle = {
+  display: 'flex',
+  flexWrap: 'wrap', // allows stacking on smaller screens
+  width: '100%',
+  alignItems: 'flex-start',
+  gap: '8px',
+};
+
+const labelWrapperStyle = {
+  display: 'flex',
+  alignItems: 'center',
+  fontSize: '16px',
+  fontWeight: '400',
+  padding: '19px 0',
+
+  flex: '0.3', 
+  gap:'20px'
+  // minWidth: '250px',
+ 
+};
+
+
 
   const dropAreaStyle = {
-    border: '1px solid #767676',
-    padding: '10px 16px',
-    textAlign: 'center',
-    backgroundColor: '#E9EEEA',
-    borderRadius: '10px',
-    // maxWidth: '415px',
-     flex:'0.6',
-    width: '100%',
-    color: '#767676',
-    height:'212px',
-    display:'flex',
-    justifyContent:'center',
-    flexDirection:'column',
-    alignItems:'center',
+  border: '1px solid #767676',
+  padding: '10px 16px',
+  backgroundColor: '#E9EEEA',
+  borderRadius: '10px',
+  flex: '0.6 200px ',
+  width: '100%',
+  color: '#767676',
+  height: '212px',
+  display: 'flex',
+  justifyContent: 'center',
+  flexDirection: 'column',
+  alignItems: 'center',
+  overflow: 'hidden',
+  textAlign: 'center',
+};
+  const imageStyle = {
+    width:'200px',
+    height:'200px',
+    borderRadius: '6px',
+    objectFit: 'cover',
   };
 
   const buttonStyle = {
@@ -50,22 +80,58 @@ export default function HeroMedia() {
     borderRadius: '10px',
     height: '38px',
     width: '100%',
-    fontSize: '20px',
+    fontSize: '16px',
     fontWeight: '400',
-    cursor:'pointer'
+    cursor: 'pointer',
+    marginTop: '12px',
+  };
+
+  const removeButtonStyle = {
+    ...buttonStyle,
+    backgroundColor: '#A94442',
   };
 
   return (
     <div style={containerStyle}>
-      <label style={labelStyle}>Upload Hero Media</label>
-      <p style={colonStyle}>:</p>
+      <div style={labelWrapperStyle}>
+        <span style={{
+          flex:'3'
+        }}
+        >Upload Hero Media</span><span  style={{flex:'1',}}
+          >:</span>
+      </div>
       <div style={dropAreaStyle}>
-        <p>
-        Drag and drop your Hero Background image here (wwww x hhhh)
-        Supports JPG, PNG, GIF up to 10M</p>
-      
-        <button style={buttonStyle}>Browse</button>
+        {imagePreview ? (
+          <>
+            <img src={imagePreview} alt="Preview" style={imageStyle} />
+            <p style={{ marginTop: '8px' }}>{fileName}</p>
+            <button style={removeButtonStyle} onClick={handleRemoveImage}>
+              Remove
+            </button>
+          </>
+        ) : (
+          <>
+            <p>
+              Drag and drop your Hero Background image here (wwww x hhhh)
+              <br />
+              Supports JPG, PNG, GIF up to 10M
+            </p>
+            <button style={buttonStyle} onClick={handleBrowseClick}>
+              Browse
+            </button>
+          </>
+        )}
+
+        <input
+          type="file"
+          accept="image/*"
+          ref={fileInputRef}
+          onChange={handleFileChange}
+          style={{ display: 'none' }}
+        />
       </div>
     </div>
   );
 }
+
+

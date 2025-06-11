@@ -1,40 +1,90 @@
 import React, { useState } from "react";
-import SwitchButton from "../../components/SwitchButton";
-import TransitionTable from "../../components/TransitionTable";
+import { PlusCircle } from "lucide-react";
+import SwitchButton from "../TransitionHistory/components/SwitchButton";
+import TransitionTable from "../TransitionHistory/components/TransitionTable";
+import CreditHistoryTable from "../TransitionHistory/components/CreditHistoryTable";
 
 export default function TransitionHistory() {
-  const [activeTab, setActiveTab] = useState("Transaction History");
-  const [rows, setRows] = useState([{
-    id: "TXN258904555",
-    amount: "₹99",
-    status: "Success",
-    points: 1,
-    source: "UPI",
-    date: "02 June 2025"
-  }]);
+ const [activeTab, setActiveTab] = useState("Transaction History");
 
-  const addMember = () => {
-    const newRow = { ...rows[0] };
-    setRows(prev => [...prev, newRow]);
-  };
 
   return (
-    <div style={{ fontFamily: "Arial", padding: 20, backgroundColor: "#f4f9f4", borderRadius: 12, width: "90%", margin: "auto" }}>
+    <div
+      style={{
+        backgroundColor: "#FFFFFF",
+        borderRadius: 12,
+        width: "90%",
+        height: "680px",
+        margin: "20px",
+        paddingBottom: "30px",
+        position: "relative",
+        display: "flex",
+        flexDirection: "column",
+        overflow: "hidden",
+      }}
+    >
       <SwitchButton activeTab={activeTab} setActiveTab={setActiveTab} />
 
-      <div style={{ marginTop: 20 }}>
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-          <span style={{ fontWeight: "bold", fontSize: "18px", color: "#2C7A7B" }}>Transaction</span>
+      <div
+        style={{
+          marginTop: 20,
+          flexGrow: 1,
+          display: "flex",
+          flexDirection: "column",
+        }}
+      >
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            padding: "0 20px",
+          }}
+        >
+          <span style={{ fontSize: "20px", fontWeight: 600, color: "#2C7A7B" }}>
+            {activeTab}
+          </span>
+
           <button
-            onClick={addMember}
-            style={{ padding: "8px 16px", backgroundColor: "#2C7A7B", color: "#fff", border: "none", borderRadius: "6px", cursor: "pointer" }}
+            style={{
+              width: "170px",
+              padding: "10px",
+              backgroundColor: "#2F5D62",
+              color: "#fff",
+              border: "none",
+              borderRadius: "10px",
+              cursor: "pointer",
+              display: "flex",
+              alignItems: "center",
+              gap: "8px",
+              justifyContent: "center",
+            }}
           >
-            Add Members
+            Add Members <PlusCircle size={18} />
           </button>
         </div>
-        <TransitionTable data={rows} />
-        <div style={{ textAlign: "right", marginTop: 10, color: "#666" }}>
-          <span>{`< 1/10 >`}</span>
+
+        <div style={{ flexGrow: 1, overflowY: "auto" }}>
+  {activeTab === "Transaction History" ? (
+    <TransitionTable />
+  ) : (
+    <CreditHistoryTable />
+  )}
+</div>
+
+      </div>
+
+      <div style={{ borderTop: "1px solid #ccc" }}>
+        <div
+          style={{
+            position: "absolute",
+            bottom: "10px",
+            right: "30px",
+            color: "#666",
+            fontSize: "14px",
+          }}
+        >
+          &lt; 1/10 &gt;
         </div>
       </div>
     </div>
