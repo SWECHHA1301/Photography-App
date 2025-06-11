@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import  { useState } from 'react';
 import Stepper from '../Common/Stepper';
 import SiteStructure from './SiteStructure/SiteStructure';
 import FirstImpression from './FirstImpression/FirstImpression';
