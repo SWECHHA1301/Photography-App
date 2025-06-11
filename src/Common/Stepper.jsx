@@ -3,18 +3,14 @@ import { Pencil, Star, ChevronRight, Check } from "lucide-react";
 import MainTitle from "./Titles/MainTitle";
 import NextBtn from "./Buttons/NextBtn";
 import PreviousBtn from "./Buttons/PreviousBtn";
+import PageTitle from "./Titles/PageTitle";
 
 const styles = {
   container: {
     width: "100%",
   },
   
-  header: {
-    color: "#2C7A7B",
-    fontWeight: "600",
-    fontSize: "24px",
-    marginBottom: "20px",
-  },
+ 
   trackWrapper: {
     position: "relative",
     paddingBottom: "40px",
@@ -123,8 +119,8 @@ const Stepper = ({ currentStep, onNext, onPrev, totalSteps }) => {
 
   return (
     <div style={styles.container}>
-      <div style={styles.header}>Setup Your Website</div>
-
+      
+       <PageTitle/>
       <div style={styles.trackWrapper}>
         <div style={styles.trackLine} />
 

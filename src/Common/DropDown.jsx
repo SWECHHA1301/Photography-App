@@ -8,6 +8,7 @@ export default function DropDown({ heading, section }) {
     sectionWrapper: {
       borderTop: "1px solid #767676",
       padding: " 0 24px",
+      
     },
     sectionHeader: {
       display: "flex",
