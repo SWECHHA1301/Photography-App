@@ -7,11 +7,8 @@ export default function BuyCredits() {
       backgroundColor: '#FFFFFF',
       margin: '24px',
       padding: '24px',
-    //   display: 'flex',
-    //   flexDirection: 'column',
-    //   alignItems: 'center',
       borderRadius: '20px',
-    //   overflow: 'hidden',
+  
     },
   };
 

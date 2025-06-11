@@ -13,7 +13,7 @@ import TransitionHistory from "./TransitionHistory/TransitionHistory";
 function App() {
   return (
     <div>
-      <MainContainer children={<TransitionHistory />} />
+      <MainContainer children={<BuyCredits/>} />
       {/* <BuyCredits/>
     <CreditCard/> */}
 
