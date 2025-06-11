@@ -12,7 +12,7 @@ export default function TransitionHistory() {
     <div
       style={{
         backgroundColor: "#FFFFFF",
-        borderRadius: 12,
+        borderRadius: 20,
         width: "90%",
         height: "680px",
         margin: "20px",
@@ -64,7 +64,7 @@ export default function TransitionHistory() {
           </button>
         </div>
 
-        <div style={{ flexGrow: 1, overflowY: "auto" }}>
+        <div style={{ flexGrow: 1, overflowY: "auto", scrollbarWidth: "none",}}>
   {activeTab === "Transaction History" ? (
     <TransitionTable />
   ) : (

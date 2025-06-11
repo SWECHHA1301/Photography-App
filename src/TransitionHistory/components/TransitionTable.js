@@ -61,7 +61,7 @@ export default function TransitionTable() {
               textAlign: "center",
               display: "grid",
               gridTemplateColumns: "repeat(6, 1fr)",
-              height: "40px",
+              height: "50px",
               borderBottom: "1px solid #ccc",
               borderTop: "1px solid #ccc",
             }}
@@ -96,7 +96,7 @@ export default function TransitionTable() {
               key={index}
               style={{
                 backgroundColor: "#fff",
-                borderBottom: "1px solid #000",
+                borderBottom: "2px solid #ccc",
                 borderBottomLeftRadius: "12px",
                 borderBottomRightRadius: "12px",
                 display: "grid",
@@ -132,4 +132,4 @@ const tdStyle = {
   fontWeight: "400",
   fontSize: "16px",
   color: "#2F2F2F",
-};
+};  

@@ -20,6 +20,7 @@ export default function CreditHistoryTable() {
       description: "Registration Bonus",
       date: "5/20/2025, 8:48:58 PM",
     },
+    
   ];
 
   return (
@@ -32,61 +33,49 @@ export default function CreditHistoryTable() {
         `}
       </style>
 
-      <table
-        style={{
-          width: "100%",
-          borderCollapse: "collapse",
-          display: "grid",
-        }}
-      >
-        <thead>
-          <tr
-            style={{
-              textAlign: "center",
-              display: "grid",
-              gridTemplateColumns: "repeat(4, 1fr)",
-              height: "40px",
-              borderBottom: "1px solid #ccc",
-              borderTop: "1px solid #ccc",
-            }}
-          >
-            <th style={thStyle}>Transaction Type</th>
-            <th style={thStyle}>Number of Credits</th>
-            <th style={thStyle}>Description</th>
-            <th style={thStyle}>Created At</th>
-          </tr>
-        </thead>
-
-        <tbody
+      <div style={{ overflowX: "auto" }}>
+        <table
           style={{
-            display: "block",
-            maxHeight: "450px",
-            overflowY: "auto",
+            width: "100%",
+            minWidth: "700px",
+            borderCollapse: "separate",
+            borderSpacing: "0 10px", // creates spacing between rows
           }}
         >
-          {data.map((item, index) => (
+          <thead>
             <tr
-              key={index}
               style={{
-                backgroundColor: "#fff",
-                borderBottom: "1px solid #000",
-                borderBottomLeftRadius: "12px",
-                borderBottomRightRadius: "12px",
-                display: "grid",
-                gridTemplateColumns: "repeat(4, 1fr)",
                 textAlign: "center",
-                width: "100%",
-                height: "80px",
+                height: "40px",
+                borderBottom: "1px solid #ccc",
+                borderTop: "1px solid #ccc",
               }}
             >
-              <td style={tdStyle}>{item.type}</td>
-              <td style={tdStyle}>{item.credits}</td>
-              <td style={tdStyle}>{item.description}</td>
-              <td style={tdStyle}>{item.date}</td>
+              <th style={thStyle}>Transaction Type</th>
+              <th style={thStyle}>Number of Credits</th>
+              <th style={thStyle}>Description</th>
+              <th style={thStyle}>Created At</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+
+          <tbody>
+            {data.map((item, index) => (
+              <tr
+                key={index}
+                style={{
+                  backgroundColor: "#fff",
+                  textAlign: "center",
+                }}
+              >
+                <td style={{ ...tdStyle, borderRadius: "0 0 0 10px" }}>{item.type}</td>
+                <td style={tdStyle}>{item.credits}</td>
+                <td style={tdStyle}>{item.description}</td>
+                <td style={{ ...tdStyle, borderRadius: "0 0 10px 0" }}>{item.date}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }
@@ -95,10 +84,17 @@ const thStyle = {
   padding: "10px",
   fontWeight: "600",
   color: "#2F2F2F",
+  whiteSpace: "nowrap",
+ borderBottom: "1px solid #ccc",
+ borderTop: "1px solid #ccc",
 };
 
 const tdStyle = {
   padding: "10px",
   fontSize: "15px",
   color: "#2F2F2F",
+  whiteSpace: "nowrap",
+  backgroundColor: "#fff",
+  borderBottom: "2px solid #ccc",
+  height: "80px",
 };
