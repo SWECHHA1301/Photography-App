@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 export default function Inquiries() {
   const [inquiries, setInquiries] = useState([
     {
-      name: 'Arjun SHarma',
+      name: 'Arjun Sharma',
       phone: '948XXXXXXX',
       email: 'Arjsharma@gmail.com',
       subject: 'Testing Contact Form',
@@ -12,7 +12,7 @@ export default function Inquiries() {
       resolved: false,
     },
     {
-      name: 'Arjun SHarma',
+      name: 'Arjun Sharma',
       phone: '948XXXXXXX',
       email: 'Arjsharma@gmail.com',
       subject: 'Contact Form',
@@ -20,7 +20,6 @@ export default function Inquiries() {
       date: '02 June 2025',
       resolved: true,
     },
-    
     // Add more entries if needed
   ]);
 
@@ -38,7 +37,6 @@ export default function Inquiries() {
         width: "90%",
         height: "680px",
         margin: "20px",
-        position: "relative",
         display: "flex",
         flexDirection: "column",
         overflow: "hidden",
@@ -49,24 +47,21 @@ export default function Inquiries() {
         <p style={{ color: '#767676', fontSize: '14px' }}>List of queries received</p>
       </div>
 
-      <div style={{ flex: 1, }}>
-        <table style={{ width: '100%', borderCollapse: 'separate', borderSpacing: '0 10px', minWidth: '900px' }}>
-          <thead>
-            <tr style={{ textAlign: 'left' }}>
-              <th style={thStyle}>Inquiry Status</th>
-              <th style={thStyle}>Name</th>
-              <th style={thStyle}>Phone</th>
-              <th style={thStyle}>Email</th>
-              <th style={thStyle}>Subject</th>
-              <th style={thStyle}>Message</th>
-              <th style={thStyle}>Created At</th>
-            </tr>
-          </thead>
-        </table>
-
-        {/* Scrollable tbody */}
-        <div style={scrollableTbodyStyle}>
+      {/* Table container */}
+      <div style={{ flex: 1, overflow: 'hidden' }}>
+        <div style={{ overflowY: 'auto', maxHeight: '360px' }}>
           <table style={{ width: '100%', borderCollapse: 'separate', borderSpacing: '0 10px', minWidth: '900px' }}>
+            <thead style={{ position: 'sticky', top: 0, backgroundColor: '#fff', zIndex: 1 }}>
+              <tr style={{ textAlign: 'left' }}>
+                <th style={thStyle}>Inquiry Status</th>
+                <th style={thStyle}>Name</th>
+                <th style={thStyle}>Phone</th>
+                <th style={thStyle}>Email</th>
+                <th style={thStyle}>Subject</th>
+                <th style={thStyle}>Message</th>
+                <th style={thStyle}>Created At</th>
+              </tr>
+            </thead>
             <tbody>
               {inquiries.map((inq, index) => (
                 <tr key={index} style={{ backgroundColor: '#fff' }}>
@@ -131,6 +126,7 @@ const thStyle = {
   borderBottom: "1px solid #000000",
   borderTop: "1px solid #000000",
   whiteSpace: 'nowrap',
+  backgroundColor: '#fff',
 };
 
 const tdStyle = {
@@ -140,11 +136,6 @@ const tdStyle = {
   height: '56px',
   backgroundColor: '#FFFFFF',
   borderBottom: '1px solid #000000',
-};
-
-const scrollableTbodyStyle = {
-  maxHeight: '360px',
-  overflowY: 'auto',
 };
 
 const switchWrapperStyle = {
