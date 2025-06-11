@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 import { CheckCircle } from 'lucide-react';
 
 export default function StorageCard() {
-  const [selectedPlan, setSelectedPlan] = useState('essential'); // Default selected
+  const [selectedPlan, setSelectedPlan] = useState('essential');
 
   const plans = [
     {
       title: 'Standard',
-      description: 'Ideal for new photographers.Kickstart your journey with essential tools and limited credits.',
+      description: 'Ideal for new photographers. Kickstart your journey with essential tools and limited credits.',
       price: '₹7490',
       frequency: 'Per user & annually',
       buttonText: 'Buy Storage',
@@ -75,6 +75,7 @@ export default function StorageCard() {
     }}>
       {plans.map((plan) => {
         const isSelected = plan.id === selectedPlan;
+        const isEssential = plan.id === 'essential';
 
         return (
           <div
@@ -86,7 +87,9 @@ export default function StorageCard() {
               padding: '24px',
               maxWidth: '370px',
               flex: '1 1 300px',
-              background: isSelected ? 'linear-gradient(to bottom, #ACDCDD, #FFFFFF)' : '#fff',
+              background: isEssential
+                ? 'linear-gradient(to bottom, #ACDCDD, #FFFFFF)'
+                : '#fff',
               boxShadow: '4px 4px 4px #00000040',
               position: 'relative',
               display: 'flex',
@@ -130,7 +133,7 @@ export default function StorageCard() {
                 width: '100%',
                 backgroundColor: isSelected ? '#2C7A7B' : '#fff',
                 color: isSelected ? '#fff' : '#2C7A7B',
-                border: `2px solid ${isSelected ? '#2C7A7B' : '#2C7A7B'}`,
+                border: `2px solid #2C7A7B`,
                 borderRadius: '10px',
                 fontWeight: '600',
                 cursor: 'pointer',

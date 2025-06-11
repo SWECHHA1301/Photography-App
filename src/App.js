@@ -6,7 +6,6 @@ import DriveAction from "./InputWeb/DriveAction/DriveAction";
 import CreditCard from "./BuyCredits/CreditCard/CreditCard";
 import BuyCredits from "./BuyCredits/BuyCredits";
 import TransitionHistory from "./TransitionHistory/TransitionHistory";
-import Inquiries from "./Inquiries/Inquiries";
 
 
 
@@ -14,7 +13,7 @@ import Inquiries from "./Inquiries/Inquiries";
 function App() {
   return (
     <div>
-      <MainContainer children={<Inquiries/>} />
+      <MainContainer children={<BuyCredits/>} />
       {/* <BuyCredits/>
     <CreditCard/> */}
 

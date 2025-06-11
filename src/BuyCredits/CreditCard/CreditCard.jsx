@@ -49,7 +49,7 @@ export default function CreditCard() {
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'space-between',
-    background: selectedPlan === id
+    background: id === 'business'
       ? 'linear-gradient(to bottom, #ACDCDD, #FFFFFF)'
       : '#fff',
     boxShadow: '4px 4px 4px #00000040',
@@ -123,6 +123,7 @@ export default function CreditCard() {
               borderRadius: '10px',
               fontWeight: '600',
               cursor: 'pointer',
+              transition: '0.3s',
             }}>
               {`Buy ${card.credits.split(' ')[0]} Credit${card.credits.startsWith('1') ? '' : 's'}`}
             </button>
