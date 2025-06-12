@@ -11,14 +11,18 @@ export default function Textarea({
 }) {
   const styles = {
     title: {
-      fontSize: '16px',
+         fontSize: '16px',
       fontWeight: '400',
-      width: '100%',
-      flex: '0.2',
+      flex: '0.3',
+     display: 'flex',
+      alignItems: 'center',
+      ...divStyle,
+      gap: '20px',
+      marginTop:'10px'
     },
     inputcontainer: {
       width: '100%',
-      flex: '0.34',
+      flex: '1 1 auto',
       backgroundColor: '#E9EEEA',
       borderRadius: '10px',
       border: '1px solid #767676',
@@ -30,16 +34,24 @@ export default function Textarea({
     },
     container: {
       display: 'flex',
+       flexWrap: 'wrap',
       width: '100%',
-      alignItems: 'center',
+      alignItems: 'flex-start',
       ...containerStyle,
+      gap: '8px',
+
     },
   };
 
   return (
     <div style={styles.container}>
-      <label style={styles.title}>{label}</label>
-      <p style={{ width: '100%', flex: '0.1', ...divStyle }}>:</p>
+      
+      <label style={styles.title}>
+     <span style={{
+          flex: '3',
+        }}>{label}</span>
+        <span style={{ flex: '1',}}>:</span>
+      </label>
       <textarea
         placeholder={holder}
         style={styles.inputcontainer}

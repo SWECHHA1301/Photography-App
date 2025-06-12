@@ -2,8 +2,17 @@ import React, { useState } from "react";
 import InputBar from "../../../Common/InputBar";
 import ColorPallete from "../../../Common/ColorPallete";
 import Textarea from "../../../Common/Textarea";
+import Selector from "../../../Common/Selector";
 
 export default function Timeline() {
+
+    const [selectedYear, setSelectedYear] = useState('');
+  
+  const handleChanges = (e) => {
+    setSelectedYear(e.target.value);
+  };
+
+  const years = Array.from({ length: 50 }, (_, i) => 1980 + i);
   const [services, setServices] = useState([
     {
       year: 2024,
@@ -94,12 +103,24 @@ export default function Timeline() {
       </div>
 
       {/* Form for Active Service */}
-      <div style={{}}>
+      <div style={{display:'flex',flexDirection:'column',gap:'16px'}}>
+
+         <Selector
+         label="Select Year"
+        placeholder="eg. 2024"
+        options={years}
+        value={selectedYear}
+        onChange={handleChanges}
+        customStyle={{ flex: '0.3 200px' }}
+           divStyle={{flex:'0.42'}}
+        />
         <InputBar
           label="Title"
           holder="e.g. Wedding Photography"
           value={activeService.title}
           onChange={(e) => handleChange(activeIndex, "title", e.target.value)}
+          customStyle={{ flex: '0.3 200px' }}
+           divStyle={{flex:'0.42'}}
         />
         <Textarea
           label="Description"
@@ -107,10 +128,12 @@ export default function Timeline() {
           value={activeService.description}
           onChange={(e) =>
             handleChange(activeIndex, "description", e.target.value)
+
           }
           customStyle={{
-            height: "92px",
+            height: "92px", flex: '0.3 200px'
           }}
+          divStyle={{flex:'0.42'}}
         />
         <ColorPallete
           value={activeService.color}

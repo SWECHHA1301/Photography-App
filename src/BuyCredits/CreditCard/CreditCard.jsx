@@ -43,7 +43,7 @@ export default function CreditCard() {
     borderRadius: '20px',
     padding: '24px',
     flex: '1 1 300px',
-    minWidth: '300px',
+   
     maxWidth: '390px',
     cursor: 'pointer',
     display: 'flex',
@@ -64,6 +64,7 @@ export default function CreditCard() {
       alignItems: 'stretch',
       flexWrap: 'wrap',
       gap: '42px',
+        padding: '20px'
     }}>
       {cardData.map((card) => (
         <div

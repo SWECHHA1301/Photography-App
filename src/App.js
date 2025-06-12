@@ -11,11 +11,11 @@ import Inquiries from "./Inquiries/Inquiries";
 function App() {
   return (
     <div>
-      {/* <MainContainer children={<InputWeb />} /> */}
+      <MainContainer children={<InputWeb />} />
       {/* <BuyCredits /> */}
       {/* <TransitionHistory /> */}
-      {/* <CreditCard /> */}
-      <Inquiries />
+      
+      {/* <Inquiries /> */}
     </div>
   );
 }

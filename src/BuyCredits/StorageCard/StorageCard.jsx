@@ -70,7 +70,7 @@ export default function StorageCard() {
       display: 'flex',
       justifyContent: 'center',
       flexWrap: 'wrap',
-      gap: '32px',
+      gap: '42px',
       padding: '20px'
     }}>
       {plans.map((plan) => {
@@ -85,7 +85,7 @@ export default function StorageCard() {
               border: '1px solid #ccc',
               borderRadius: '20px',
               padding: '24px',
-              maxWidth: '370px',
+              maxWidth: '390px',
               flex: '1 1 300px',
               background: isEssential
                 ? 'linear-gradient(to bottom, #ACDCDD, #FFFFFF)'
