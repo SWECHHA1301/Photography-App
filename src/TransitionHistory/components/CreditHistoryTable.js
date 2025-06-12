@@ -51,10 +51,10 @@ export default function CreditHistoryTable() {
                 borderTop: "1px solid #ccc",
               }}
             >
-              <th style={thStyle}>Transaction Type</th>
+              <th style={{...thStyle, textAlign: "left"}}>Transaction Type</th>
               <th style={thStyle}>Number of Credits</th>
               <th style={thStyle}>Description</th>
-              <th style={thStyle}>Created At</th>
+              <th style={{...thStyle, textAlign: "right"}}>Created At</th>
             </tr>
           </thead>
 
@@ -67,10 +67,10 @@ export default function CreditHistoryTable() {
                   textAlign: "center",
                 }}
               >
-                <td style={{ ...tdStyle, borderRadius: "0 0 0 10px" }}>{item.type}</td>
+                <td style={{ ...tdStyle, borderRadius: "0 0 0 10px", textAlign: "left"}}>{item.type}</td>
                 <td style={tdStyle}>{item.credits}</td>
                 <td style={tdStyle}>{item.description}</td>
-                <td style={{ ...tdStyle, borderRadius: "0 0 10px 0" }}>{item.date}</td>
+                <td style={{ ...tdStyle, borderRadius: "0 0 10px 0",  textAlign: "right" }}>{item.date}</td>
               </tr>
             ))}
           </tbody>

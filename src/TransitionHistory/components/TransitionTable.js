@@ -38,98 +38,75 @@ export default function TransitionTable() {
   ];
 
   return (
-    <div style={{ maxHeight: "500px", marginTop: "10px" }}>
+    <div style={{ maxHeight: "500px", overflowY: "auto", marginTop: "10px" }}>
       <style>
         {`
-          tbody::-webkit-scrollbar {
+          ::-webkit-scrollbar {
             display: none;
           }
         `}
       </style>
 
-      <table
-        style={{
-          width: "100%",
-          borderCollapse: "separate",
-          borderSpacing: "0",
-          display: "grid",
-        }}
-      >
-        <thead>
-          <tr
-            style={{
-              textAlign: "center",
-              display: "grid",
-              gridTemplateColumns: "repeat(6, 1fr)",
-              height: "50px",
-              borderBottom: "1px solid #ccc",
-              borderTop: "1px solid #ccc",
-            }}
-          >
-            <th style={thStyle}>Transaction ID</th>
-            <th style={thStyle}>
-              Amount <ArrowDown size={14} style={{ paddingLeft: "10px" }} />
-            </th>
-            <th style={thStyle}>
-              Status <ArrowDown size={14} style={{ paddingLeft: "10px" }} />
-            </th>
-            <th style={thStyle}>
-              Credit Points{" "}
-              <ArrowDown size={14} style={{ paddingLeft: "10px" }} />
-            </th>
-            <th style={thStyle}>Payment Source</th>
-            <th style={thStyle}>Created At</th>
-          </tr>
-        </thead>
-
-        <tbody
+      <div style={{ overflowX: "auto" }}>
+        <table
           style={{
-            display: "grid",
-            overflowY: "scroll",
-            maxHeight: "440px",
-            scrollbarWidth: "none",
-            msOverflowStyle: "none",
+            width: "100%",
+            minWidth: "700px",
+            borderCollapse: "separate",
+            borderSpacing: "0 10px", // creates spacing between rows
           }}
         >
-          {transactionData.map((item, index) => (
-            <tr
-              key={index}
-              style={{
-                backgroundColor: "#fff",
-                borderBottom: "2px solid #ccc",
-                borderBottomLeftRadius: "12px",
-                borderBottomRightRadius: "12px",
-                display: "grid",
-                gridTemplateColumns: "repeat(6, 1fr)",
-                textAlign: "center",
-                width: "100%",
-                height: "80px",
-              }}
-            >
-              <td style={tdStyle}>{item.id}</td>
-              <td style={tdStyle}>{item.amount}</td>
-              <td style={tdStyle}>{item.status}</td>
-              <td style={tdStyle}>{item.points}</td>
-              <td style={tdStyle}>{item.source}</td>
-              <td style={tdStyle}>{item.date}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+          <thead>
+  <tr style={{ height: "40px", borderBottom: "1px solid #ccc", borderTop: "1px solid #ccc" }}>
+    <th style={{ ...thStyle, textAlign: "left" }}>Transaction ID</th>
+    <th style={{ ...thStyle, textAlign: "center" }}>
+      Amount <ArrowDown size={14} style={{ paddingLeft: "10px" }} />
+    </th>
+    <th style={{ ...thStyle, textAlign: "center" }}>
+      Status <ArrowDown size={14} style={{ paddingLeft: "10px" }} />
+    </th>
+    <th style={{ ...thStyle, textAlign: "center" }}>
+      Credit Points <ArrowDown size={14} style={{ paddingLeft: "10px" }} />
+    </th>
+    <th style={{ ...thStyle, textAlign: "center" }}>Payment Source</th>
+    <th style={{ ...thStyle, textAlign: "right" }}>Created At</th>
+  </tr>
+</thead>
+
+<tbody>
+  {transactionData.map((item, index) => (
+    <tr key={index}>
+      <td style={{ ...tdStyle, textAlign: "left" }}>{item.id}</td>
+      <td style={{ ...tdStyle, textAlign: "center" }}>{item.amount}</td>
+      <td style={{ ...tdStyle, textAlign: "center" }}>{item.status}</td>
+      <td style={{ ...tdStyle, textAlign: "center" }}>{item.points}</td>
+      <td style={{ ...tdStyle, textAlign: "center" }}>{item.source}</td>
+      <td style={{ ...tdStyle, textAlign: "right" }}>{item.date}</td>
+    </tr>
+  ))}
+</tbody>
+
+        </table>
+      </div>
     </div>
   );
 }
 
 const thStyle = {
   padding: "10px",
-  fontWeight: "700",
-  fontSize: "14px",
-  color: "#555555",
+  fontWeight: "600",
+  color: "#2F2F2F",
+  whiteSpace: "nowrap",
+  borderBottom: "1px solid #ccc",
+  borderTop: "1px solid #ccc",
 };
 
 const tdStyle = {
   padding: "10px",
-  fontWeight: "400",
-  fontSize: "16px",
+  fontSize: "15px",
   color: "#2F2F2F",
-};  
+  whiteSpace: "nowrap",
+  backgroundColor: "#fff",
+  borderBottom: "2px solid #ccc",
+  height: "80px",
+};

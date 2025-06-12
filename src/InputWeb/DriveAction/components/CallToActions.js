@@ -1,26 +1,43 @@
 import React, { useState } from "react";
 
 export default function CallToActions() {
+  const [formData, setFormData] = useState({
+    Title: "",
+    Description: "",
+    "Primary Button": "",
+    "Secondary Button": "",
+  });
+
   const inputs = [
     {
-      label: "Title", placeholder: "e.g. 2024"
+      label: "Title",
+      placeholder: "e.g. 2024",
+      maxLength: 30,
     },
     {
       label: "Description",
       placeholder:
         "Sarah captured our wedding day perfectly! Her attention to detail and ability to capture candid moments was incredible.",
-        maxLength: 80,
+      maxLength: 80,
     },
-    { label: "Primary Button", placeholder: "e.g. Hello, I am name",maxLength: 30 },
-    { label: "Secondary Button", placeholder: "Emily & James Rodriguez",maxLength: 30 },
+    {
+      label: "Primary Button",
+      placeholder: "e.g. Hello, I am name",
+      maxLength: 30,
+    },
+    {
+      label: "Secondary Button",
+      placeholder: "Emily & James Rodriguez",
+      maxLength: 30,
+    },
   ];
 
   const styles = {
-     row: {
+    row: {
       display: "flex",
       alignItems: "center",
       marginBottom: "12px",
-      position: "relative", // for select + icon
+      position: "relative",
     },
     label: {
       width: "418px",
@@ -38,7 +55,7 @@ export default function CallToActions() {
     },
     textarea: {
       width: "389px",
-      height: "64px",
+      height: "65px",
       padding: "6px 10px",
       borderRadius: "10px",
       border: "1px solid #ccc",
@@ -47,27 +64,63 @@ export default function CallToActions() {
       fontSize: "14px",
       resize: "none",
     },
+    charCount: {
+      position: "absolute",
+      bottom: "2px",
+      right: "-5px",
+      fontSize: "12px",
+      color: "#767676",
+    },
+  };
 
+  const handleChange = (label, value) => {
+    setFormData((prev) => ({
+      ...prev,
+      [label]: value,
+    }));
   };
 
   return (
-    <div style={styles.container}>
+    <div>
+      {inputs.map((input, index) => {
+        const value = formData[input.label] || "";
+        const maxLength = input.maxLength || 100;
 
-      {inputs.map((input, index) => (
-        <div key={index} style={styles.row}>
-          <div style={styles.label}>{input.label} :</div>
-          {input.label === "Description" ? (
-            <textarea
-              placeholder={input.placeholder}
-              style={styles.textarea}
-            />
-          ) : (
-            <input placeholder={input.placeholder} style={styles.input} />
-            
-          )}
-        </div>
-      ))}
-
+        return (
+          <div key={index} style={{ ...styles.row, alignItems: "flex-start" }}>
+            <div style={styles.label}>{input.label} :</div>
+            <div style={{ position: "relative", width: "389px" }}>
+              {input.label === "Description" ? (
+                <>
+                  <textarea
+                    placeholder={input.placeholder}
+                    maxLength={maxLength}
+                    value={value}
+                    onChange={(e) => handleChange(input.label, e.target.value)}
+                    style={styles.textarea}
+                  />
+                  <div style={styles.charCount}>
+                    {value.length}/{maxLength}
+                  </div>
+                </>
+              ) : (
+                <>
+                  <input
+                    placeholder={input.placeholder}
+                    maxLength={maxLength}
+                    value={value}
+                    onChange={(e) => handleChange(input.label, e.target.value)}
+                    style={styles.input}
+                  />
+                  <div style={styles.charCount}>
+                    {value.length}/{maxLength}
+                  </div>
+                </>
+              )}
+            </div>
+          </div>
+        );
+      })}
     </div>
   );
 }

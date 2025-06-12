@@ -13,7 +13,7 @@ export default function TransitionHistory() {
       style={{
         backgroundColor: "#FFFFFF",
         borderRadius: 20,
-        width: "90%",
+        width: "95%",
         height: "680px",
         margin: "20px",
         paddingBottom: "30px",

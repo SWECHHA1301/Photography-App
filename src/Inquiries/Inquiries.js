@@ -34,7 +34,7 @@ export default function Inquiries() {
       style={{
         backgroundColor: "#FFFFFF",
         borderRadius: 20,
-        width: "90%",
+        width: "100%",
         height: "680px",
         margin: "20px",
         display: "flex",
@@ -49,17 +49,23 @@ export default function Inquiries() {
 
       {/* Table container */}
       <div style={{ flex: 1, overflow: 'hidden' }}>
-        <div style={{ overflowY: 'auto', maxHeight: '360px' }}>
-          <table style={{ width: '100%', borderCollapse: 'separate', borderSpacing: '0 10px', minWidth: '900px' }}>
-            <thead style={{ position: 'sticky', top: 0, backgroundColor: '#fff', zIndex: 1 }}>
-              <tr style={{ textAlign: 'left' }}>
-                <th style={thStyle}>Inquiry Status</th>
-                <th style={thStyle}>Name</th>
-                <th style={thStyle}>Phone</th>
-                <th style={thStyle}>Email</th>
-                <th style={thStyle}>Subject</th>
-                <th style={thStyle}>Message</th>
-                <th style={thStyle}>Created At</th>
+        <div style={{ overflowY: 'auto', maxHeight: '360px', paddingRight: '16px' }}>
+          <table style={{ width: '100%', minWidth: '950px', borderCollapse: 'separate', borderSpacing: '0 10px' }}>
+            <thead style={{
+              position: 'sticky',
+              top: 0,
+              backgroundColor: '#fff',
+              zIndex: 1,
+              boxShadow: '0 2px 5px rgba(0,0,0,0.05)',
+            }}>
+              <tr>
+                <th style={{ ...thStyle, textAlign: "left" }}>Inquiry Status</th>
+                <th style={{ ...thStyle, textAlign: "center" }}>Name</th>
+                <th style={{ ...thStyle, textAlign: "center" }}>Phone</th>
+                <th style={{ ...thStyle, textAlign: "center" }}>Email</th>
+                <th style={{ ...thStyle, textAlign: "center" }}>Subject</th>
+                <th style={{ ...thStyle, textAlign: "center" }}>Message</th>
+                <th style={{ ...thStyle, textAlign: "right", paddingRight: '20px' }}>Created At</th>
               </tr>
             </thead>
             <tbody>
@@ -94,7 +100,9 @@ export default function Inquiries() {
                   <td style={tdStyle}>{inq.email}</td>
                   <td style={tdStyle}>{inq.subject || '-'}</td>
                   <td style={tdStyle}>{inq.message || '-'}</td>
-                  <td style={{ ...tdStyle, borderBottomRightRadius: 10 }}>{inq.date}</td>
+                  <td style={{ ...tdStyle, borderBottomRightRadius: 10, textAlign: 'right', paddingRight: '20px' }}>
+                    {inq.date}
+                  </td>
                 </tr>
               ))}
             </tbody>
@@ -136,7 +144,9 @@ const tdStyle = {
   height: '56px',
   backgroundColor: '#FFFFFF',
   borderBottom: '1px solid #000000',
+  textAlign: 'center', // Add this line to center-align
 };
+
 
 const switchWrapperStyle = {
   display: 'flex',
