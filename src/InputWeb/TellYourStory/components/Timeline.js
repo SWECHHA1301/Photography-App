@@ -1,18 +1,12 @@
 import React, { useState } from "react";
-import InputBar from "../../../Common/InputBar";
+import { ChevronDown } from "lucide-react";
 import ColorPallete from "../../../Common/ColorPallete";
-import Textarea from "../../../Common/Textarea";
-import Selector from "../../../Common/Selector";
 
 export default function Timeline() {
-
-    const [selectedYear, setSelectedYear] = useState('');
-  
-  const handleChanges = (e) => {
-    setSelectedYear(e.target.value);
-  };
+  const [selectedYear, setSelectedYear] = useState("");
 
   const years = Array.from({ length: 50 }, (_, i) => 1980 + i);
+
   const [services, setServices] = useState([
     {
       year: 2024,
@@ -23,6 +17,7 @@ export default function Timeline() {
       color: "",
     },
   ]);
+
   const [activeIndex, setActiveIndex] = useState(0);
 
   const handleChange = (index, field, value) => {
@@ -49,9 +44,79 @@ export default function Timeline() {
 
   const activeService = services[activeIndex];
 
+  const inputs = [
+    { label: "Title", placeholder: "e.g. Sarah Mitchell" },
+    { label: "Description", placeholder: "" },
+  ];
+
+  const styles = {
+    row: {
+      display: "flex",
+      alignItems: "center",
+      marginBottom: "12px",
+    },
+    label: {
+      flex: "0.2",
+      fontSize: "16px",
+      fontWeight: "400",
+      color: "#2F2F2F",
+    },
+    colon: {
+      flex: "0.1",
+      fontSize: "16px",
+      fontWeight: "400",
+      color: "#2F2F2F",
+    },
+    fieldWrapper: {
+      flex: "0.7",
+      display: "flex",
+      alignItems: "center",
+      position: "relative",
+    },
+    input: {
+      maxWidth: "485px",
+      width: "100%",
+      padding: "6px 10px",
+      borderRadius: "10px",
+      border: "1px solid #ccc",
+      backgroundColor: "#E9EEEA",
+      height: "32px",
+      fontSize: "14px",
+    },
+    textarea: {
+      maxWidth: "485px",
+      width: "100%",
+      height: "64px",
+      padding: "6px 10px",
+      borderRadius: "10px",
+      border: "1px solid #ccc",
+      backgroundColor: "#E9EEEA",
+      fontFamily: "inherit",
+      fontSize: "14px",
+      resize: "none",
+    },
+    select: {
+      maxWidth: "312px",
+      width: "100%",
+      height: "40px",
+      padding: "6px 30px 6px 10px", // extra right padding for icon space
+      borderRadius: "10px",
+      border: "1px solid #ccc",
+      backgroundColor: "#E9EEEA",
+      appearance: "none",
+      WebkitAppearance: "none",
+      MozAppearance: "none",
+      fontSize: "14px",
+    },
+    chevron: {
+      position: "absolute",
+      left: "30%", // This was your custom position
+    },
+  };
+
   return (
     <div>
-      {/* Service Tabs */}
+      {/* Year Buttons */}
       <div style={{ display: "flex", marginBottom: 10 }}>
         {services.map((service, index) => (
           <button
@@ -102,44 +167,59 @@ export default function Timeline() {
         </button>
       </div>
 
-      {/* Form for Active Service */}
-      <div style={{display:'flex',flexDirection:'column',gap:'16px'}}>
-
-         <Selector
-         label="Select Year"
-        placeholder="eg. 2024"
-        options={years}
-        value={selectedYear}
-        onChange={handleChanges}
-        customStyle={{ flex: '0.3 200px' }}
-           divStyle={{flex:'0.42'}}
-        />
-        <InputBar
-          label="Title"
-          holder="e.g. Wedding Photography"
-          value={activeService.title}
-          onChange={(e) => handleChange(activeIndex, "title", e.target.value)}
-          customStyle={{ flex: '0.3 200px' }}
-           divStyle={{flex:'0.42'}}
-        />
-        <Textarea
-          label="Description"
-          holder="eg. Featured in Photography Masters Magazine and won the International Wedding Photography Award."
-          value={activeService.description}
-          onChange={(e) =>
-            handleChange(activeIndex, "description", e.target.value)
-
-          }
-          customStyle={{
-            height: "92px", flex: '0.3 200px'
-          }}
-          divStyle={{flex:'0.42'}}
-        />
-        <ColorPallete
-          value={activeService.color}
-          onChange={(color) => handleChange(activeIndex, "color", color)}
-        />
+      {/* Year Dropdown */}
+      <div style={styles.row}>
+        <div style={styles.label}>Year</div>
+        <div style={styles.colon}>:</div>
+        <div style={styles.fieldWrapper}>
+          <select
+            style={styles.select}
+            value={activeService.year}
+            onChange={(e) =>
+              handleChange(activeIndex, "year", parseInt(e.target.value))
+            }
+          >
+            {years.map((year) => (
+              <option key={year} value={year}>
+                {year}
+              </option>
+            ))}
+          </select>
+          <ChevronDown size={16} style={styles.chevron} />
+        </div>
       </div>
+
+      {/* Title & Description */}
+      {inputs.map((input, index) => (
+        <div key={index} style={styles.row}>
+          <div style={styles.label}>{input.label}</div>
+          <div style={styles.colon}>:</div>
+          <div style={styles.fieldWrapper}>
+            {input.label === "Description" ? (
+              <textarea
+                placeholder={input.placeholder}
+                style={styles.textarea}
+                value={activeService.description}
+                onChange={(e) =>
+                  handleChange(activeIndex, "description", e.target.value)
+                }
+              />
+            ) : (
+              <input
+                placeholder={input.placeholder}
+                style={styles.input}
+                value={activeService.title}
+                onChange={(e) =>
+                  handleChange(activeIndex, "title", e.target.value)
+                }
+              />
+            )}
+          </div>
+        </div>
+      ))}
+
+      {/* Color Picker */}
+      <ColorPallete />
     </div>
   );
 }
