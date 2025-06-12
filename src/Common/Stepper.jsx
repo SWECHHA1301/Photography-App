@@ -17,6 +17,8 @@ const styles = {
     marginBottom: "30px",
     overflowY: "hidden",
     overflowX: "auto", 
+    scrollbarWidth: "none", // Firefox
+    msOverflowStyle: "none", // IE 10+
   },
   trackLine: {
     position: "absolute",
@@ -200,14 +202,17 @@ const Stepper = ({ currentStep, onNext, onPrev, totalSteps, onStepClick }) => {
           justifyContent: "space-between",
           alignItems: "flex-end",
           gap: "24px",
+          flexWrap: "wrap",
         }}
       >
-        <MainTitle />
+   
+  <MainTitle />
 
-        <div style={{ display: "flex", gap: "16px" }}>
-          {currentStep !== 0 && <PreviousBtn onClick={onPrev} />}
-          <NextBtn onClick={onNext} disabled={currentStep === totalSteps - 1} />
-        </div>
+  <div style={{ display: "flex", gap: "16px" }}>
+    {currentStep !== 0 && <PreviousBtn onClick={onPrev} />}
+    <NextBtn onClick={onNext} disabled={currentStep === totalSteps - 1} />
+  </div>
+
       </div>
     </div>
   );
