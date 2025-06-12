@@ -15,7 +15,7 @@ export default function ViewPortfolio({ holder = "View Portfolio" }) {
 
   return (
     <>
-     <style>
+      <style>
         {`
           #custom-placeholder::placeholder {
             color: #ffffff;
@@ -25,7 +25,9 @@ export default function ViewPortfolio({ holder = "View Portfolio" }) {
         `}
       </style>
       <input
-      id="custom-placeholder"
+        disabled
+        readOnly
+        id="custom-placeholder"
         type="text"
         placeholder={holder}
         style={inputStyle}

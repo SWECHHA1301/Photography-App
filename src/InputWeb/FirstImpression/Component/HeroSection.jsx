@@ -21,15 +21,17 @@ export default function HeroSection() {
 
         <HeroMedia />
 
-        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', }}>
           <InputBar
             label="Cta Primary"
             holder="e.g. View Portfolio"
             customStyle={{ flex: '0.4 200px' }}
             value={ctaPrimary}
             onChange={(e) => setCtaPrimary(e.target.value)}
+            suffixComponent={
+              <ViewPortfolio holder={ctaPrimary || 'View Portfolio'} />
+            }
           />
-          <ViewPortfolio holder={ctaPrimary || 'View Portfolio'} />
         </div>
 
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
@@ -39,8 +41,11 @@ export default function HeroSection() {
             customStyle={{ flex: '0.4 200px' }}
             value={ctaSecondary}
             onChange={(e) => setCtaSecondary(e.target.value)}
+            suffixComponent={
+              <AboutUsBtn holder={ctaSecondary || 'About Us'} />
+            }
           />
-          <AboutUsBtn holder={ctaSecondary || 'About Us'} />
+
         </div>
 
         <InputBar

@@ -8,6 +8,7 @@ export default function InputBar({
   divStyle = {},
   value,
   onChange,
+  suffixComponent = null,
 }) {
   const styles = {
     container: {
@@ -21,13 +22,13 @@ export default function InputBar({
     title: {
       fontSize: '16px',
       fontWeight: '400',
-     flex: '0.3',
+      flex: '0.3',
       // minWidth: '250px',
       display: 'flex',
       alignItems: 'center',
       ...divStyle,
-      gap:'20px'
-    
+      gap: '20px'
+
     },
     inputContainer: {
       height: '41px',
@@ -39,7 +40,7 @@ export default function InputBar({
       fontWeight: '400',
       padding: '0 16px',
       width: '100%',
-    
+
       ...customStyle,
     },
   };
@@ -48,9 +49,9 @@ export default function InputBar({
     <div style={styles.container}>
       <label style={styles.title}>
         <span style={{
-          flex:'3',
+          flex: '3',
         }}>{label}</span>
-        <span style={{flex:'1',}}>:</span>
+        <span style={{ flex: '1', }}>:</span>
       </label>
 
       <input
@@ -60,6 +61,12 @@ export default function InputBar({
         value={value}
         onChange={onChange}
       />
+
+      {suffixComponent && (
+        <div style={{ flex: '0.2', display: 'flex', justifyContent: 'center' }}>
+          {suffixComponent}
+        </div>
+      )}
     </div>
   );
 }

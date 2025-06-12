@@ -15,7 +15,7 @@ export default function ViewPortfolio({ holder = "About Us" }) {
 
   return (
     <>
-     <style>
+      <style>
         {`
           #About-placeholder::placeholder {
             color: #2C7A7B;
@@ -25,7 +25,9 @@ export default function ViewPortfolio({ holder = "About Us" }) {
         `}
       </style>
       <input
-      id="About-placeholder"
+        disabled
+        readOnly
+        id="About-placeholder"
         type="text"
         placeholder={holder}
         style={inputStyle}

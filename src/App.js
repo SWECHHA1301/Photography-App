@@ -6,20 +6,17 @@ import DriveAction from "./InputWeb/DriveAction/DriveAction";
 import CreditCard from "./BuyCredits/CreditCard/CreditCard";
 import BuyCredits from "./BuyCredits/BuyCredits";
 import TransitionHistory from "./TransitionHistory/TransitionHistory";
-
-
-
+import Inquiries from "./Inquiries/Inquiries";
 
 function App() {
   return (
     <div>
-      <MainContainer children={<InputWeb/>} />
-      {/* <BuyCredits/>
-    <CreditCard/> */}
-
+      {/* <MainContainer children={<InputWeb />} /> */}
+      {/* <BuyCredits /> */}
+      {/* <TransitionHistory /> */}
+      {/* <CreditCard /> */}
+      <Inquiries />
     </div>
-    
- 
   );
 }
 
