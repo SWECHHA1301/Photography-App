@@ -10,6 +10,9 @@ import AboutPage from './TellYourStory/AboutPage';
 
 export default function InputWeb() {
   const [currentStep, setCurrentStep] = useState(0);
+  const handleStepClick = (stepIndex) => {
+  setCurrentStep(stepIndex);
+};
 
   const styles = {
     mainContainer: {
@@ -53,12 +56,14 @@ export default function InputWeb() {
   return (
     <div style={styles.mainContainer}>
       {/* Stepper receives handlers to control navigation */}
-      <Stepper
-        currentStep={currentStep}
-        onNext={handleNext}
-        onPrev={handlePrev}
-        totalSteps={components.length}
-      />
+     <Stepper
+  currentStep={currentStep}
+  onNext={() => setCurrentStep((prev) => prev + 1)}
+  onPrev={() => setCurrentStep((prev) => prev - 1)}
+  totalSteps={6}
+  onStepClick={handleStepClick}
+/>
+
 
       {/* Render only the current component */}
       <div style={{ marginTop: '20px', width: '100%' }}>

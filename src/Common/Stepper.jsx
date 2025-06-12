@@ -103,7 +103,8 @@ const steps = [
   { label: "Drive Action & Visibility" },
 ];
 
-const Stepper = ({ currentStep, onNext, onPrev, totalSteps }) => {
+const Stepper = ({ currentStep, onNext, onPrev, totalSteps, onStepClick }) => {
+
   const stepRefs = useRef([]);
 
   useEffect(() => {
@@ -125,54 +126,55 @@ const Stepper = ({ currentStep, onNext, onPrev, totalSteps }) => {
         <div style={styles.trackLine} />
 
         <div style={styles.stepperContent}>
-          {steps.map((step, index) => {
-            let icon, bgColor, border;
+        {steps.map((step, index) => {
+  let icon, bgColor, border;
 
-            if (index < currentStep) {
-              icon = <Check size={14} color="#147D73" />;
-              bgColor = "#D3E3E4";
-              border = "2px solid #147D73";
-            } else if (index === currentStep) {
-              icon = <Pencil size={14} color="black" fill={"black"} />;
-              bgColor = "#fff6dc";
-              border = "2px solid #F4C430";
-            } else {
-              icon = (
-                <span
-                  style={{ fontSize: 20, fontWeight: "700", color: "#666" }}
-                >
-                  {index + 1}
-                </span>
-              );
-              bgColor = "#E3D3D3";
-              border = "2px solid  #DF5151";
-            }
+  if (index < currentStep) {
+    icon = <Check size={14} color="#147D73" />;
+    bgColor = "#D3E3E4";
+    border = "2px solid #147D73";
+  } else if (index === currentStep) {
+    icon = <Pencil size={14} color="black" fill={"black"} />;
+    bgColor = "#fff6dc";
+    border = "2px solid #F4C430";
+  } else {
+    icon = (
+      <span style={{ fontSize: 20, fontWeight: "700", color: "#666" }}>
+        {index + 1}
+      </span>
+    );
+    bgColor = "#E3D3D3";
+    border = "2px solid  #DF5151";
+  }
 
-            return (
-              <div
-                key={index}
-                ref={(el) => (stepRefs.current[index] = el)}
-                style={styles.stepWrapper}
-              >
-                <div
-                  style={{
-                    width: 40,
-                    height: 40,
-                    borderRadius: "50%",
-                    backgroundColor: bgColor,
-                    border: border,
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    zIndex: 2,
-                  }}
-                >
-                  {icon}
-                </div>
-                <div style={styles.stepLabel}>{step.label}</div>
-              </div>
-            );
-          })}
+  return (
+    <div
+      key={index}
+      ref={(el) => (stepRefs.current[index] = el)}
+      style={styles.stepWrapper}
+      onClick={() => onStepClick(index)} // ← add this
+    >
+      <div
+        style={{
+          width: 40,
+          height: 40,
+          borderRadius: "50%",
+          backgroundColor: bgColor,
+          border: border,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          zIndex: 2,
+          cursor: "pointer", // add pointer cursor
+        }}
+      >
+        {icon}
+      </div>
+      <div style={styles.stepLabel}>{step.label}</div>
+    </div>
+  );
+})}
+
 
           <div style={styles.finalStepWrapper}>
             <div style={styles.finalStepCircle}>
