@@ -38,6 +38,7 @@ export default function CallToActions() {
       alignItems: "center",
       marginBottom: "12px",
       position: "relative",
+      flexWrap:'wrap'
     },
     label: {
       width: "418px",

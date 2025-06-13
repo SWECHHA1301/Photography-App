@@ -14,10 +14,11 @@ export default function Title({title}) {
 
           }}
         >
-          <p style={{fontSize: "32px",
+          <span style={{fontSize: "32px",
             fontWeight: "400",
             color: "#f4b400",
-            padding:'0 16px'}}>{title}</p>
+            minWidth:'200px',
+            padding:'4px 16px'}}>{title}</span>
 
         </div>
 

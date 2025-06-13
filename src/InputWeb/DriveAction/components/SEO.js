@@ -22,6 +22,7 @@ export default function SEO() {
       alignItems: "center",
       marginBottom: "12px",
       position: "relative", // for select + icon
+        flexWrap:'wrap'
     },
     label: {
       width: "418px",

@@ -2,7 +2,7 @@ import React from 'react'
 import DropDown from '../../Common/DropDown'
 import Title from '../../Common/Titles/Title'
 import Service from './Components/Service'
-import State from './Components/State'
+import Status from './Components/Status'
 export default function Offer() {
      const styles ={
         constainer:{
@@ -16,7 +16,7 @@ export default function Offer() {
      <div style={styles.constainer}>
           <Title title={"What You Offer"}/>
           <DropDown heading={"Service /Specialities "} section={<Service/>}/>
-         <DropDown heading={"State"} section={<State/>}/>
+         <DropDown heading={"Status"} section={<Status/>}/>
           </div>
     </>
   )

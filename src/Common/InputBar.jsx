@@ -40,7 +40,7 @@ export default function InputBar({
       fontWeight: '400',
       padding: '0 16px',
       width: '100%',
-
+      minWidth:'150px',
       ...customStyle,
     },
   };
