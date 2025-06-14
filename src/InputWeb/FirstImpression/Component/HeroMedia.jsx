@@ -41,9 +41,9 @@ const labelWrapperStyle = {
   fontWeight: '400',
   padding: '19px 0',
 
-  flex: '0.3', 
-  gap:'20px'
-  // minWidth: '250px',
+  flex: '0.4', 
+  gap:'20px',
+  minWidth: '250px',
  
 };
 
@@ -54,7 +54,7 @@ const labelWrapperStyle = {
   padding: '10px 16px',
   backgroundColor: '#E9EEEA',
   borderRadius: '10px',
-  flex: '0.6 200px ',
+  flex: '0.5 400px ',
   width: '100%',
   color: '#767676',
   height: '212px',
@@ -94,11 +94,7 @@ const labelWrapperStyle = {
   return (
     <div style={containerStyle}>
       <div style={labelWrapperStyle}>
-        <span style={{
-          flex:'3'
-        }}
-        >Upload Hero Media</span><span  style={{flex:'1',}}
-          >:</span>
+        <span>Upload Hero Media</span><span>:</span>
       </div>
       <div style={dropAreaStyle}>
         {imagePreview ? (

@@ -6,6 +6,7 @@ import BrandFoundation from './BrandFoundation/BrandFoundation';
 import Offer from './Offer/Offer';
 import DriveAction from './DriveAction/DriveAction';
 import AboutPage from './TellYourStory/AboutPage';
+import PageTitle from "../Common/Titles/PageTitle";
 
 
 export default function InputWeb() {
@@ -23,7 +24,7 @@ export default function InputWeb() {
       padding: '24px',
       display: 'flex',
       flexDirection: 'column',
-      alignItems: 'center',
+      // alignItems: 'center',
       borderRadius: '20px',
       overflow: 'hidden',
     },
@@ -55,6 +56,7 @@ export default function InputWeb() {
 
   return (
     <div style={styles.mainContainer}>
+       <PageTitle/>
       {/* Stepper receives handlers to control navigation */}
      <Stepper
   currentStep={currentStep}

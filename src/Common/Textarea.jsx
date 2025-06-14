@@ -13,9 +13,11 @@ export default function Textarea({
     title: {
          fontSize: '16px',
       fontWeight: '400',
-      flex: '0.3',
+      flex: '0.4',
      display: 'flex',
       alignItems: 'center',
+      minWidth: '250px',
+      
       ...divStyle,
       gap: '20px',
       marginTop:'10px'
@@ -29,7 +31,7 @@ export default function Textarea({
     fontSize:'16px',
     fontWeight:'400',
       padding: '8px 16px',
-      minWidth:'150px',
+      minWidth:'200px',
       resize: 'vertical', // allows resizing, optional
       ...customStyle,
     },
@@ -49,10 +51,8 @@ export default function Textarea({
     <div style={styles.container}>
       
       <label style={styles.title}>
-     <span style={{
-          flex: '3',
-        }}>{label}</span>
-        <span style={{ flex: '1',}}>:</span>
+     <span>{label}</span>
+        <span>:</span>
       </label>
       <textarea
         placeholder={holder}

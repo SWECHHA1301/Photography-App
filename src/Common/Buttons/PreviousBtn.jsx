@@ -13,6 +13,7 @@ export default function PreviousBtn({ onClick, disabled }) {
     alignItems: "center",
     gap: 6,
     height: "40px",
+     
     marginTop: "10px",
     opacity: disabled ? 0.5 : 1,
   };
