@@ -37,6 +37,7 @@ export default function BrandColors() {
       padding: "20px",
       borderRadius: "4px",
       fontFamily: "sans-serif",
+            flexWrap: "wrap",
     },
     label: {
       fontWeight: "bold",

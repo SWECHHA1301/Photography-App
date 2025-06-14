@@ -26,9 +26,10 @@ export default function Textarea({
       backgroundColor: '#E9EEEA',
       borderRadius: '10px',
       border: '1px solid #767676',
-      fontSize: '16px',
-      fontWeight: '400',
+    fontSize:'16px',
+    fontWeight:'400',
       padding: '8px 16px',
+      minWidth:'150px',
       resize: 'vertical', // allows resizing, optional
       ...customStyle,
     },
@@ -39,6 +40,7 @@ export default function Textarea({
       alignItems: 'flex-start',
       ...containerStyle,
       gap: '8px',
+    
 
     },
   };

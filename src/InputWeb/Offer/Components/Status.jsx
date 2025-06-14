@@ -2,14 +2,15 @@ import React, { useState } from 'react';
 import InputBar from '../../../Common/InputBar';
 import ColorPallete from '../../../Common/ColorPallete';
 import LayoutOptions from '../../../Common/LayoutOptions';
+import IconCategorySelector from '../../../Common/IconCategorySelector';
 
-export default function State() {
+export default function Status() {
    const [services, setServices] = useState([
      {
-       title: '',
-       description: '',
+       Label: '',
+       Achived : '',
        icon: '',
-       category: '',
+       category:'',
        color: ''
      }
    ]);
@@ -25,10 +26,9 @@ export default function State() {
      setServices(prev => [
        ...prev,
        {
-         title: '',
-         description: '',
+         Label: '',
+         Achived: '',
          icon: '',
-         category: '',
          color: ''
        }
      ]);
@@ -99,35 +99,28 @@ export default function State() {
 }}>
   Card {activeIndex + 1}
 </h3>
+         <div style={{display:'flex',flexDirection:'column',gap:'16px'}}>
          <InputBar
-           label="Title"
-           holder="e.g. Wedding Photography"
-           value={activeService.title}
-           onChange={e => handleChange(activeIndex, 'title', e.target.value)}
+           label="Label"
+           holder="e.g. Photo Sessions"
+           value={activeService.Label}
+           onChange={e => handleChange(activeIndex, 'Label', e.target.value)}
+            customStyle={{flex :'0.35 200'}}
          />
          <InputBar
-           label="Description"
-           holder="Description"
-           value={activeService.description}
-           onChange={e => handleChange(activeIndex, 'description', e.target.value)}
-           
+           label="Achived Numbers"
+           holder="500+"
+           value={activeService.Achived}
+           onChange={e => handleChange(activeIndex, 'Achived', e.target.value)}
+           customStyle={{flex :'0.35 200'}}
          />
-         <InputBar
-           label="Icon"
-           holder="e.g. heart"
-           value={activeService.icon}
-           onChange={e => handleChange(activeIndex, 'icon', e.target.value)}
-         />
-         <InputBar
-           label="Category"
-           holder="e.g. Weddings"
-           value={activeService.category}
-           onChange={e => handleChange(activeIndex, 'category', e.target.value)}
-         />
+       <IconCategorySelector/>
+        
          <ColorPallete
            value={activeService.color}
            onChange={color => handleChange(activeIndex, 'color', color)}
          />
+         </div>
        </div>
      </div>
    );

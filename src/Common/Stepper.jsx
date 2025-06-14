@@ -24,9 +24,10 @@ const styles = {
     position: "absolute",
     top: "30px",
     left: "90px",
-    right: "140px",
+    right: "160px",
     height: 2,
     backgroundColor: "#aaa",
+    minWidth:'500px',
     zIndex: 0,
   },
   stepperContent: {

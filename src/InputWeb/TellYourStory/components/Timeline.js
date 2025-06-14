@@ -96,7 +96,7 @@ export default function Timeline() {
       resize: "none",
     },
     select: {
-      maxWidth: "312px",
+      maxWidth: "335px",
       width: "100%",
       height: "40px",
       padding: "6px 30px 6px 10px", // extra right padding for icon space

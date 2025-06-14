@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import InputBar from '../../../Common/InputBar'
 import ColorPallete from '../../../Common/ColorPallete';
-
+import Textarea from '../../../Common/Textarea';
+import IconCategorySelector from '../../../Common/IconCategorySelector';
+const CATEGORY_OPTIONS = ['Weddings', 'Portraits', 'Events', 'Commercial', 'Fashion'];
 export default function WhatYouOffer() {
+    const [selectedCategory, setSelectedCategory] = useState(CATEGORY_OPTIONS[0]);
   const [services, setServices] = useState([
     {
       title: '',
@@ -80,25 +83,61 @@ export default function WhatYouOffer() {
         </button>
       </div>
 
-      <div style={{  padding: 15}}>
+      <div style={{display:'flex',flexDirection:'column',gap:'16px'}}>
 
      <InputBar label="Title" holder="e.g. Wedding Photography"
      value={activeService.title}
-            onChange={e => handleChange(activeIndex, 'title', e.target.value)}/>
+            onChange={e => handleChange(activeIndex, 'title', e.target.value)}
+            customStyle={{flex :'0.35 200'}}
+            />
 
 
-            <InputBar label="Description" holder="Description"
+            <Textarea label="Description" holder="Description"
       value={activeService.description}
-            onChange={e => handleChange(activeIndex, 'description', e.target.value)}/>
+            onChange={e => handleChange(activeIndex, 'description', e.target.value)}
+            customStyle={{flex :'0.35 200'}}/>
 
 
-            <InputBar label="Icon" holder="e.g. heart"
-     value={activeService.icon}
-            onChange={e => handleChange(activeIndex, 'icon', e.target.value)}/>
+          <IconCategorySelector/>
 
-            <InputBar label="Category" holder="e.g. Weddings "
-      value={activeService.category}
-            onChange={e => handleChange(activeIndex, 'category', e.target.value)}/>
+          {/* Category Dropdown */}
+      <div style={{
+         display: 'flex',
+      flexWrap: 'wrap',
+      alignItems: 'center',
+      width: '100%',
+      gap: '8px',
+      }}>
+        <div style={{flex:'0.34',
+           display: 'flex',
+      alignItems: 'center',
+    
+      gap: '20px'
+        }}>
+        <label style={{flex:'3'}}>Select Category</label>
+        <span style={{ flex: '1', }}>:</span>
+        </div>
+        <select
+          value={selectedCategory}
+          onChange={(e) => setSelectedCategory(e.target.value)}
+          style={{  height: '41px',
+      flex: '0.2 200px',
+      backgroundColor: '#E9EEEA',
+      borderRadius: '10px',
+      border: '1px solid #767676',
+      fontSize: '16px',
+      fontWeight: '400',
+      padding: '0 16px',
+      width: '100%',
+ }}
+        >
+          {CATEGORY_OPTIONS.map((cat) => (
+            <option key={cat} value={cat}>
+              {cat}
+            </option>
+          ))}
+        </select>
+      </div>
        
             <ColorPallete
   value={activeService.color}
