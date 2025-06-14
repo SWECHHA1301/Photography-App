@@ -4,7 +4,7 @@ import ColorPallete from "../../../Common/ColorPallete";
 
 export default function Timeline() {
 
-  const years = Array.from({ length: 50 }, (_, i) => 1980 + i);
+  const years = Array.from({ length: 8 }, (_, i) => 2000 + i);
 
   const [services, setServices] = useState([
     {

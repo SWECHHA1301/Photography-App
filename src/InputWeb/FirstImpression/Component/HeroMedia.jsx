@@ -96,7 +96,7 @@ const labelWrapperStyle = {
       <div style={labelWrapperStyle}>
         <span>Upload Hero Media</span><span>:</span>
       </div>
-      <div style={dropAreaStyle}>
+      <div style={dropAreaStyle} onClick={handleBrowseClick}>
         {imagePreview ? (
           <>
             <img src={imagePreview} alt="Preview" style={imageStyle} />
@@ -112,7 +112,7 @@ const labelWrapperStyle = {
               <br />
               Supports JPG, PNG, GIF up to 10M
             </p>
-            <button style={buttonStyle} onClick={handleBrowseClick}>
+            <button style={buttonStyle} >
               Browse
             </button>
           </>

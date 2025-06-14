@@ -5,7 +5,11 @@ export default function Testimonial({ data, updateData }) {
   const [rating, setRating] = useState(0);
   const input = [
     { label: "Avatar", key: "avatar", placeholder: "e.g. Hello, I am name" },
-    { label: "Author's Name", key: "author", placeholder: "Emily & James Rodriguez" },
+    {
+      label: "Author's Name",
+      key: "author",
+      placeholder: "Emily & James Rodriguez",
+    },
     {
       label: "Comment",
       key: "comment",
@@ -15,12 +19,12 @@ export default function Testimonial({ data, updateData }) {
   ];
 
   const styles = {
-     row: {
+    row: {
       display: "flex",
       alignItems: "center",
       marginBottom: "12px",
       position: "relative", // for select + icon
-        flexWrap:'wrap'
+      flexWrap: "wrap",
     },
     label: {
       width: "418px",
@@ -81,8 +85,6 @@ export default function Testimonial({ data, updateData }) {
 
   return (
     <div style={styles.container}>
-
-
       {input.map((input, index) => (
         <div key={index} style={styles.row}>
           <div style={styles.label}>{input.label} :</div>
@@ -94,9 +96,12 @@ export default function Testimonial({ data, updateData }) {
               style={styles.textarea}
             />
           ) : (
-            <input placeholder={input.placeholder}
-            value={data[input.key] || ""}
-              onChange={(e) => updateData({ [input.key]: e.target.value })} style={styles.input} />
+            <input
+              placeholder={input.placeholder}
+              value={data[input.key] || ""}
+              onChange={(e) => updateData({ [input.key]: e.target.value })}
+              style={styles.input}
+            />
           )}
         </div>
       ))}
@@ -104,7 +109,11 @@ export default function Testimonial({ data, updateData }) {
       <div style={styles.row}>
         <div style={styles.label}>Service Provided :</div>
         <div style={styles.selectWrapper}>
-          <select style={styles.select}>
+          <select
+            value={data.service || ""}
+            onChange={(e) => updateData({ service: e.target.value })}
+            style={styles.select}
+          >
             <option>Wedding Photography</option>
             <option>Birthday Party</option>
             <option>Engagement Shoot</option>
