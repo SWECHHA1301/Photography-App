@@ -1,13 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 
-export default function CallToActions() {
-  const [formData, setFormData] = useState({
-    Title: "",
-    Description: "",
-    "Primary Button": "",
-    "Secondary Button": "",
-  });
-
+export default function CallToActions({ data, updateData }) {
   const inputs = [
     {
       label: "Title",
@@ -22,12 +15,12 @@ export default function CallToActions() {
     },
     {
       label: "Primary Button",
-      placeholder: "e.g. Hello, I am name",
+      placeholder: "Book a Session",
       maxLength: 30,
     },
     {
       label: "Secondary Button",
-      placeholder: "Emily & James Rodriguez",
+      placeholder: "View Portfolio",
       maxLength: 30,
     },
   ];
@@ -38,7 +31,7 @@ export default function CallToActions() {
       alignItems: "center",
       marginBottom: "12px",
       position: "relative",
-      flexWrap:'wrap'
+      flexWrap: "wrap",
     },
     label: {
       width: "418px",
@@ -47,7 +40,8 @@ export default function CallToActions() {
       color: "#2F2F2F",
     },
     input: {
-      width: "389px",
+      maxWidth: "389px",
+      width: "100%",
       padding: "6px 10px",
       borderRadius: "10px",
       border: "1px solid #ccc",
@@ -55,7 +49,8 @@ export default function CallToActions() {
       height: "32px",
     },
     textarea: {
-      width: "389px",
+      maxWidth: "389px",
+      width: "100%",
       height: "65px",
       padding: "6px 10px",
       borderRadius: "10px",
@@ -75,16 +70,13 @@ export default function CallToActions() {
   };
 
   const handleChange = (label, value) => {
-    setFormData((prev) => ({
-      ...prev,
-      [label]: value,
-    }));
+    updateData({ [label]: value });
   };
 
   return (
     <div>
       {inputs.map((input, index) => {
-        const value = formData[input.label] || "";
+        const value = data[input.label] || "";
         const maxLength = input.maxLength || 100;
 
         return (
@@ -97,7 +89,9 @@ export default function CallToActions() {
                     placeholder={input.placeholder}
                     maxLength={maxLength}
                     value={value}
-                    onChange={(e) => handleChange(input.label, e.target.value)}
+                    onChange={(e) =>
+                      handleChange(input.label, e.target.value)
+                    }
                     style={styles.textarea}
                   />
                   <div style={styles.charCount}>
@@ -110,7 +104,9 @@ export default function CallToActions() {
                     placeholder={input.placeholder}
                     maxLength={maxLength}
                     value={value}
-                    onChange={(e) => handleChange(input.label, e.target.value)}
+                    onChange={(e) =>
+                      handleChange(input.label, e.target.value)
+                    }
                     style={styles.input}
                   />
                   <div style={styles.charCount}>

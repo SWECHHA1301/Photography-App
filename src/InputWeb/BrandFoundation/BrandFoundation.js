@@ -1,42 +1,12 @@
-import React, { useState } from "react";
-import { ChevronDown, ChevronRight } from "lucide-react";
+import React from "react";
 import BuisnessInfo from "./components/BuisnessInfo";
 import ContactInfo from "./components/ContactInfo";
 import BrandColors from "./components/BrandColors";
 import Title from "../../Common/Titles/Title";
 import DropDown from "../../Common/DropDown";
 
-export default function BrandFoundation() {
+export default function BrandFoundation({ data, updateData }) {
   const styles = {
-    sectionWrapper: {
-      borderTop: "1px solid #767676",
-      padding: "24px 12px",
-      width: "100%",
-      boxSizing: "border-box",
-    },
-    sectionTitle: {
-      fontSize: "16px",
-      fontWeight: "700",
-      color: "#2F2F2F",
-      marginBottom: "12px",
-    },
-    nextBtnWrap: {
-      display: "flex",
-      justifyContent: "flex-end",
-      marginTop: "32px",
-      width: "100%",
-      flexWrap: "wrap",
-    },
-    nextButton: {
-      padding: "10px 20px",
-      backgroundColor: "#2c7a7b",
-      color: "#fff",
-      fontWeight: "bold",
-      border: "none",
-      borderRadius: "6px",
-      cursor: "pointer",
-      margin: "16px",
-    },
     contentBox: {
       width: "100%",
       borderRadius: "10px",
@@ -50,10 +20,39 @@ export default function BrandFoundation() {
   return (
     <div style={styles.contentBox}>
       <Title title={"Brand Foundation"} />
-
-      <DropDown heading={"BusinessInfo"} section={<BuisnessInfo />} />
-      <DropDown heading={"Contact Info"} section={<ContactInfo />} />
-      <DropDown heading={"Brand Colors"} section={<BrandColors />} />
+      <DropDown
+        heading={"Business Info"}
+        section={
+          <BuisnessInfo
+            data={data.businessInfo || {}}
+            updateData={(updated) =>
+              updateData({ businessInfo: { ...data.businessInfo, ...updated } })
+            }
+          />
+        }
+      />
+      <DropDown
+        heading={"Contact Info"}
+        section={
+          <ContactInfo
+            data={data.contactInfo || {}}
+            updateData={(updated) =>
+              updateData({ contactInfo: { ...data.contactInfo, ...updated } })
+            }
+          />
+        }
+      />
+      <DropDown
+        heading={"Brand Colors"}
+        section={
+          <BrandColors
+            data={data.brandColors || {}}
+            updateData={(updated) =>
+              updateData({ brandColors: { ...data.brandColors, ...updated } })
+            }
+          />
+        }
+      />
     </div>
   );
 }

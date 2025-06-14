@@ -5,7 +5,7 @@ import Timeline from "./components/Timeline";
 import Title from "../../Common/Titles/Title";
 import DropDown from "../../Common/DropDown";
 
-export default function AboutPage() {
+export default function AboutPage({ data, updateData }) {
   const styles = {
     sectionWrapper: {
       borderTop: "1px solid #767676",
@@ -50,8 +50,14 @@ export default function AboutPage() {
     <div style={styles.contentBox}>
       <Title title={"Tell Your Story"} />
 
-      <DropDown heading={"About"} section={<About />} />
-      <DropDown heading={"Timeline"} section={<Timeline/>} />
+      <DropDown heading={"About"} section={<About data={data.about || {}}
+            updateData={(updated) =>
+              updateData({ about: { ...data.about, ...updated } })
+            }/>} />
+      <DropDown heading={"Timeline"} section={<Timeline data={data.timeline || {}}
+            updateData={(updated) =>
+              updateData({ timeline: { ...data.timeline, ...updated } })
+            }/>} />
     </div>
   );
 }

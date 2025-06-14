@@ -1,25 +1,30 @@
 import React, { useState } from "react";
 import { ChevronDown, Star } from "lucide-react";
 
-export default function Testimonial() {
+export default function Testimonial({ data, updateData }) {
   const [rating, setRating] = useState(0);
-  const inputs = [
-    { label: "Avatar", placeholder: "e.g. Hello, I am name" },
-    { label: "Author's Name", placeholder: "Emily & James Rodriguez" },
+  const input = [
+    { label: "Avatar", key: "avatar", placeholder: "e.g. Hello, I am name" },
+    {
+      label: "Author's Name",
+      key: "author",
+      placeholder: "Emily & James Rodriguez",
+    },
     {
       label: "Comment",
+      key: "comment",
       placeholder:
         "Sarah captured our wedding day perfectly! Her attention to detail and ability to capture candid moments was incredible.",
     },
   ];
 
   const styles = {
-     row: {
+    row: {
       display: "flex",
       alignItems: "center",
       marginBottom: "12px",
       position: "relative", // for select + icon
-        flexWrap:'wrap'
+      flexWrap: "wrap",
     },
     label: {
       width: "418px",
@@ -80,18 +85,23 @@ export default function Testimonial() {
 
   return (
     <div style={styles.container}>
-
-
-      {inputs.map((input, index) => (
+      {input.map((input, index) => (
         <div key={index} style={styles.row}>
           <div style={styles.label}>{input.label} :</div>
           {input.label === "Comment" ? (
             <textarea
               placeholder={input.placeholder}
+              value={data[input.key] || ""}
+              onChange={(e) => updateData({ [input.key]: e.target.value })}
               style={styles.textarea}
             />
           ) : (
-            <input placeholder={input.placeholder} style={styles.input} />
+            <input
+              placeholder={input.placeholder}
+              value={data[input.key] || ""}
+              onChange={(e) => updateData({ [input.key]: e.target.value })}
+              style={styles.input}
+            />
           )}
         </div>
       ))}
@@ -99,7 +109,11 @@ export default function Testimonial() {
       <div style={styles.row}>
         <div style={styles.label}>Service Provided :</div>
         <div style={styles.selectWrapper}>
-          <select style={styles.select}>
+          <select
+            value={data.service || ""}
+            onChange={(e) => updateData({ service: e.target.value })}
+            style={styles.select}
+          >
             <option>Wedding Photography</option>
             <option>Birthday Party</option>
             <option>Engagement Shoot</option>

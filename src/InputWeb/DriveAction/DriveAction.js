@@ -7,7 +7,7 @@ import Title from "../../Common/Titles/Title";
 import DropDown from "../../Common/DropDown";
 
 
-export default function DriveAction() {
+export default function DriveAction({ data, updateData }) {
   const styles = {
     sectionWrapper: {
       borderTop: "1px solid #767676",
@@ -52,9 +52,24 @@ export default function DriveAction() {
     <div style={styles.contentBox}>
       <Title title={"Drive Action And Visibility"} />
 
-      <DropDown heading={"Testimonial"} section={<Testimonial />} />
-      <DropDown heading={"Call To Actions"} section={<CallToActions />} />
-      <DropDown heading={"SEO"} section={<SEO />} />
+      <DropDown heading={"Testimonial"} section={<Testimonial 
+      data={data.testimonial || {}}
+            updateData={(updated) =>
+              updateData({ testimonial: { ...data.testimonial, ...updated } })
+            }
+            />
+            } />
+      <DropDown heading={"Call To Actions"} section={<CallToActions 
+      data={data.callToActions || {}}
+            updateData={(updated) =>
+              updateData({ callToActions: { ...data.callToActions, ...updated } })
+            }/>} />
+      <DropDown heading={"SEO"} section={<SEO 
+      data={data.seo || {}}
+            updateData={(updated) =>
+              updateData({ seo: { ...data.seo, ...updated } })
+            }
+            />} />
     </div>
   );
 }

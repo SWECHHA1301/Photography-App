@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 
-export default function About() {
+export default function About({ data, updateData }) {
   const inputs = [
-    { label: "Greeting Intro", placeholder: "e.g. Hello, I am name" },
+    { label: "Greeting Intro", key: "greetings", placeholder: "e.g. Hello, I am name" },
     {
       label: "Bio",
+      key: "bio",
       placeholder:
         "Sarah captured our wedding day perfectly! Her attention to detail and ability to capture candid moments was incredible.",
     },
@@ -18,7 +19,8 @@ export default function About() {
     },
     row: {
       display: "flex",
-      alignItems: "flex-start", // important for vertical alignment with textarea
+      flexWrap: "wrap",
+      alignItems: "flex-start",
       gap: "20px",
     },
     label: {
@@ -26,7 +28,7 @@ export default function About() {
       fontSize: "16px",
       fontWeight: "400",
       color: "#2F2F2F",
-      lineHeight: "32px", // aligns with input height
+      lineHeight: "32px",
     },
     input: {
       width: "389px",
@@ -58,11 +60,15 @@ export default function About() {
           {input.label === "Bio" ? (
             <textarea
               placeholder={input.placeholder}
-              style={{...styles.textarea, marginBottom: "20px"}}
+              value={data[input.key] || ""} // ✅ corrected from inputs.key
+              onChange={(e) => updateData({ [input.key]: e.target.value })} // ✅ corrected
+              style={{ ...styles.textarea, marginBottom: "20px" }}
             />
           ) : (
             <input
               placeholder={input.placeholder}
+              value={data[input.key] || ""}
+              onChange={(e) => updateData({ [input.key]: e.target.value })}
               style={styles.input}
             />
           )}

@@ -4,7 +4,7 @@ import DropDown from '../../Common/DropDown'
 import HeroSection from './Component/HeroSection'
 
 
-export default function FirstImpression() {
+export default function FirstImpression({ data, updateData }) {
       const styles ={
         constainer:{
              borderRadius:'10px',
@@ -16,7 +16,10 @@ export default function FirstImpression() {
    <>
       <div style={styles.constainer}>
       <Title title={"First Impression"}/>
-      <DropDown heading={"Hero Section"} section={<HeroSection/>}/>
+      <DropDown heading={"Hero Section"} section={<HeroSection data={data.heroSection || {}}
+            updateData={(updated) =>
+              updateData({ heroSection: { ...data.heroSection, ...updated } })
+            }/>}/>
      
       </div>
       </>

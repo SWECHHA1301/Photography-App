@@ -4,9 +4,8 @@ import ColorPallete from '../../../Common/ColorPallete';
 import Textarea from '../../../Common/Textarea';
 
 export default function Timeline() {
-  const [selectedYear, setSelectedYear] = useState("");
 
-  const years = Array.from({ length: 50 }, (_, i) => 1980 + i);
+  const years = Array.from({ length: 8 }, (_, i) => 2000 + i);
 
   const [services, setServices] = useState([
     {
@@ -49,6 +48,7 @@ export default function Timeline() {
   const styles = {
     row: {
       display: "flex",
+      flexWrap: "wrap",
       alignItems: "center",
       marginBottom: "12px",
       gap:'8px'
@@ -67,7 +67,7 @@ export default function Timeline() {
          
       width: "100%",
       height: "40px",
-      padding: "6px 30px 6px 10px", // extra right padding for icon space
+      padding: "6px 30px 6px 10px",
       borderRadius: "10px",
       border: "1px solid #767676",
       backgroundColor: "#E9EEEA",
@@ -75,13 +75,19 @@ export default function Timeline() {
       // WebkitAppearance: "none",
       // MozAppearance: "none",
       fontSize: "16px",
+
+      
+    },
+    chevron: {
+      position: "absolute",
+      left: "30%",
     },
   
   };
 
   return (
     <div>
-      {/* Year Buttons */}
+   
       <div style={{ display: "flex", marginBottom: 10 }}>
         {services.map((service, index) => (
           <button
@@ -133,7 +139,7 @@ export default function Timeline() {
         </button>
       </div>
 
-      {/* Year Dropdown */}
+
       <div style={styles.row}>
         <div style={{  flex: '0.39',display:'flex',alignItems:'center',gap:'20px'}}>
         <div>Year</div>
@@ -170,7 +176,6 @@ export default function Timeline() {
                               <ColorPallete />
                              </div>
     
-     
     </div>
   );
 }
