@@ -23,7 +23,7 @@ export default function Testimonial({ data, updateData }) {
       display: "flex",
       alignItems: "center",
       marginBottom: "12px",
-      position: "relative", // for select + icon
+      position: "relative", 
       flexWrap: "wrap",
     },
     label: {
@@ -62,7 +62,7 @@ export default function Testimonial({ data, updateData }) {
       borderRadius: "10px",
       border: "1px solid #ccc",
       backgroundColor: "#eef0ec",
-      appearance: "none", // hide default arrow
+      appearance: "none",
       WebkitAppearance: "none",
       MozAppearance: "none",
       fontSize: "14px",

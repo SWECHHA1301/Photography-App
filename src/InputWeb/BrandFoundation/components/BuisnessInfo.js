@@ -96,7 +96,6 @@ export default function BuisnessInfo({ data, updateData }) {
         </div>
       ))}
 
-      {/* Established Time Dropdown */}
       <div style={styles.row}>
         <div style={styles.label}>Established Time :</div>
         <div style={styles.selectWrapper}>

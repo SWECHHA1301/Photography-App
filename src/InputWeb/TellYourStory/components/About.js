@@ -60,8 +60,8 @@ export default function About({ data, updateData }) {
           {input.label === "Bio" ? (
             <textarea
               placeholder={input.placeholder}
-              value={data[input.key] || ""} // ✅ corrected from inputs.key
-              onChange={(e) => updateData({ [input.key]: e.target.value })} // ✅ corrected
+              value={data[input.key] || ""}
+              onChange={(e) => updateData({ [input.key]: e.target.value })} 
               style={{ ...styles.textarea, marginBottom: "20px" }}
             />
           ) : (
