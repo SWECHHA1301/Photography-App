@@ -19,6 +19,7 @@ export default function InputBar({
       width: '100%',
       gap: '8px',
       ...Style,
+     
     },
     title: {
       fontSize: '16px',
@@ -42,7 +43,7 @@ export default function InputBar({
       fontWeight: '400',
       padding: '0 16px',
       width: '100%',
-      minWidth:'200px',
+      minWidth: '240px',
       ...customStyle,
     },
   };

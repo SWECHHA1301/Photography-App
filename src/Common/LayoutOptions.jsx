@@ -16,8 +16,8 @@ export default function LayoutOptions() {
     heading: {
       fontWeight: '400',
       fontSize: '16px',
-      flex: '1.2',
-      minWidth: '120px',
+      flex: '1.1',
+      minWidth: '250px',
     },
     optionsContainer: {
       display: 'flex',

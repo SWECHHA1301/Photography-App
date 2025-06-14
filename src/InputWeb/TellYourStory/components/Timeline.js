@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { ChevronDown } from "lucide-react";
-import ColorPallete from "../../../Common/ColorPallete";
+import InputBar from '../../../Common/InputBar'
+import ColorPallete from '../../../Common/ColorPallete';
+import Textarea from '../../../Common/Textarea';
 
 export default function Timeline() {
   const [selectedYear, setSelectedYear] = useState("");
@@ -44,74 +45,38 @@ export default function Timeline() {
 
   const activeService = services[activeIndex];
 
-  const inputs = [
-    { label: "Title", placeholder: "e.g. Sarah Mitchell" },
-    { label: "Description", placeholder: "" },
-  ];
-
+  
   const styles = {
     row: {
       display: "flex",
       alignItems: "center",
       marginBottom: "12px",
+      gap:'8px'
     },
-    label: {
-      flex: "0.2",
-      fontSize: "16px",
-      fontWeight: "400",
-      color: "#2F2F2F",
-    },
-    colon: {
-      flex: "0.1",
-      fontSize: "16px",
-      fontWeight: "400",
-      color: "#2F2F2F",
-    },
+    
     fieldWrapper: {
-      flex: "0.7",
+      flex: "0.13 400px",
       display: "flex",
       alignItems: "center",
       position: "relative",
+      minWidth:'250px'
     },
-    input: {
-      maxWidth: "485px",
-      width: "100%",
-      padding: "6px 10px",
-      borderRadius: "10px",
-      border: "1px solid #ccc",
-      backgroundColor: "#E9EEEA",
-      height: "32px",
-      fontSize: "14px",
-    },
-    textarea: {
-      maxWidth: "485px",
-      width: "100%",
-      height: "64px",
-      padding: "6px 10px",
-      borderRadius: "10px",
-      border: "1px solid #ccc",
-      backgroundColor: "#E9EEEA",
-      fontFamily: "inherit",
-      fontSize: "14px",
-      resize: "none",
-    },
+ 
+   
     select: {
-      maxWidth: "335px",
+         
       width: "100%",
       height: "40px",
       padding: "6px 30px 6px 10px", // extra right padding for icon space
       borderRadius: "10px",
-      border: "1px solid #ccc",
+      border: "1px solid #767676",
       backgroundColor: "#E9EEEA",
-      appearance: "none",
-      WebkitAppearance: "none",
-      MozAppearance: "none",
-      fontSize: "14px",
+      // appearance: "none",
+      // WebkitAppearance: "none",
+      // MozAppearance: "none",
+      fontSize: "16px",
     },
-    chevron: {
-      position: "absolute",
-      left: "30%", // This was your custom position
-    },
+  
   };
 
   return (
@@ -138,6 +103,7 @@ export default function Timeline() {
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
+             
             }}
           >
             {service.year}
@@ -169,8 +135,9 @@ export default function Timeline() {
 
       {/* Year Dropdown */}
       <div style={styles.row}>
-        <div style={styles.label}>Year</div>
-        <div style={styles.colon}>:</div>
+        <div style={{  flex: '0.39',display:'flex',alignItems:'center',gap:'20px'}}>
+        <div>Year</div>
+        <div>:</div></div>
         <div style={styles.fieldWrapper}>
           <select
             style={styles.select}
@@ -185,41 +152,25 @@ export default function Timeline() {
               </option>
             ))}
           </select>
-          <ChevronDown size={16} style={styles.chevron} />
+         
         </div>
       </div>
-
-      {/* Title & Description */}
-      {inputs.map((input, index) => (
-        <div key={index} style={styles.row}>
-          <div style={styles.label}>{input.label}</div>
-          <div style={styles.colon}>:</div>
-          <div style={styles.fieldWrapper}>
-            {input.label === "Description" ? (
-              <textarea
-                placeholder={input.placeholder}
-                style={styles.textarea}
-                value={activeService.description}
-                onChange={(e) =>
-                  handleChange(activeIndex, "description", e.target.value)
-                }
-              />
-            ) : (
-              <input
-                placeholder={input.placeholder}
-                style={styles.input}
-                value={activeService.title}
-                onChange={(e) =>
-                  handleChange(activeIndex, "title", e.target.value)
-                }
-              />
-            )}
-          </div>
-        </div>
-      ))}
-
-      {/* Color Picker */}
-      <ColorPallete />
+<div style={{display:'flex',flexDirection:'column',gap:'16px'}}>
+       <InputBar label="Title" holder="eg.  International Recognition"
+           value={activeService.title}
+                  onChange={e => handleChange(activeIndex, 'title', e.target.value)}
+                  customStyle={{flex :'0.1 400px' }}
+                  />
+                      <Textarea label="Description" holder="eg. Featured in Photography
+                               Masters Magazine and won the
+                               International Wedding Photography Award."
+                        value={activeService.description}
+                              onChange={e => handleChange(activeIndex, 'description', e.target.value)}
+                             customStyle={{flex :'0.1 400px' ,height:'92px'}}/>
+                              <ColorPallete />
+                             </div>
+    
+     
     </div>
   );
 }

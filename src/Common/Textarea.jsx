@@ -31,7 +31,7 @@ export default function Textarea({
     fontSize:'16px',
     fontWeight:'400',
       padding: '8px 16px',
-      minWidth:'200px',
+        minWidth: '240px',
       resize: 'vertical', // allows resizing, optional
       ...customStyle,
     },

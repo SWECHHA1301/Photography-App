@@ -3,6 +3,8 @@ import InputBar from '../../../Common/InputBar'
 import ColorPallete from '../../../Common/ColorPallete';
 import Textarea from '../../../Common/Textarea';
 import IconCategorySelector from '../../../Common/IconCategorySelector';
+import CategorySelector from '../../../Common/CategorySelector';
+
 const CATEGORY_OPTIONS = ['Weddings', 'Portraits', 'Events', 'Commercial', 'Fashion'];
 export default function WhatYouOffer() {
     const [selectedCategory, setSelectedCategory] = useState(CATEGORY_OPTIONS[0]);
@@ -101,44 +103,15 @@ export default function WhatYouOffer() {
           <IconCategorySelector/>
 
           {/* Category Dropdown */}
-      <div style={{
-         display: 'flex',
-      flexWrap: 'wrap',
-      alignItems: 'center',
-      width: '100%',
-      gap: '8px',
-      }}>
-        <div style={{flex:'0.32',
-           display: 'flex',
-      alignItems: 'center',
-      minWidth:'250px',
-      gap: '20px'
-        }}>
-        <label>Select Category</label>
-        <span>:</span>
-        </div>
-        <select
-          value={selectedCategory}
-          onChange={(e) => setSelectedCategory(e.target.value)}
-          style={{  height: '41px',
-      flex: '0.1 400px',
-      backgroundColor: '#E9EEEA',
-      borderRadius: '10px',
-      border: '1px solid #767676',
-      fontSize: '16px',
-      fontWeight: '400',
-      padding: '0 16px',
-      width: '100%',
-      minWidth:'200px'
- }}
-        >
-          {CATEGORY_OPTIONS.map((cat) => (
-            <option key={cat} value={cat}>
-              {cat}
-            </option>
-          ))}
-        </select>
-      </div>
+          <CategorySelector
+        selectedCategory={selectedCategory}
+        setSelectedCategory={setSelectedCategory}
+        CATEGORY_OPTIONS={CATEGORY_OPTIONS}
+        value={activeService.category}
+  onChange={category => handleChange(activeIndex, 'category', category)}
+ 
+      />
+      
        
             <ColorPallete
   value={activeService.color}
