@@ -11,7 +11,6 @@ import PageTitle from "../Common/Titles/PageTitle";
 export default function InputWeb() {
   const [currentStep, setCurrentStep] = useState(0);
 
-  // ✅ Main state to store all form data
   const [formData, setFormData] = useState({
     brandFoundation: {},
     siteStructure: {},
@@ -21,7 +20,7 @@ export default function InputWeb() {
     driveAction: {},
   });
 
-  // ✅ Update function for each section
+
   const updateSection = (section, newData) => {
     setFormData((prev) => ({
       ...prev,
@@ -44,7 +43,7 @@ export default function InputWeb() {
     },
   };
 
-  // ✅ Pass current data + update function to each component
+  
   const components = [
     <BrandFoundation
       data={formData.brandFoundation}
