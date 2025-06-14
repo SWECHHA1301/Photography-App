@@ -52,6 +52,7 @@ export default function Timeline() {
   const styles = {
     row: {
       display: "flex",
+      flexWrap: "wrap",
       alignItems: "center",
       marginBottom: "12px",
     },

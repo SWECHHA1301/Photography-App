@@ -18,6 +18,7 @@ export default function About() {
     },
     row: {
       display: "flex",
+      flexWrap: "wrap",
       alignItems: "flex-start", // important for vertical alignment with textarea
       gap: "20px",
     },
