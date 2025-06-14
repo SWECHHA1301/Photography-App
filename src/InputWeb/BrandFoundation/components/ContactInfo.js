@@ -14,6 +14,7 @@ export default function ContactInfo() {
       display: "flex",
       alignItems: "center",
       marginBottom: "12px",
+            flexWrap: "wrap",
     },
     label: {
       width: "418px",

@@ -13,6 +13,7 @@ export default function BuisnessInfo() {
   const styles = {
     row: {
       display: "flex",
+      flexWrap: "wrap",
       alignItems: "center",
       marginBottom: "12px",
       position: "relative", // for select + icon
