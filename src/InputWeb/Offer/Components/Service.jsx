@@ -88,14 +88,14 @@ export default function WhatYouOffer() {
      <InputBar label="Title" holder="e.g. Wedding Photography"
      value={activeService.title}
             onChange={e => handleChange(activeIndex, 'title', e.target.value)}
-            customStyle={{flex :'0.35 200'}}
+            customStyle={{flex :'0.1 400px' }}
             />
 
 
             <Textarea label="Description" holder="Description"
       value={activeService.description}
             onChange={e => handleChange(activeIndex, 'description', e.target.value)}
-            customStyle={{flex :'0.35 200'}}/>
+           customStyle={{flex :'0.1 400px' }}/>
 
 
           <IconCategorySelector/>
@@ -108,20 +108,20 @@ export default function WhatYouOffer() {
       width: '100%',
       gap: '8px',
       }}>
-        <div style={{flex:'0.34',
+        <div style={{flex:'0.32',
            display: 'flex',
       alignItems: 'center',
-    
+      minWidth:'250px',
       gap: '20px'
         }}>
-        <label style={{flex:'3'}}>Select Category</label>
-        <span style={{ flex: '1', }}>:</span>
+        <label>Select Category</label>
+        <span>:</span>
         </div>
         <select
           value={selectedCategory}
           onChange={(e) => setSelectedCategory(e.target.value)}
           style={{  height: '41px',
-      flex: '0.2 200px',
+      flex: '0.1 400px',
       backgroundColor: '#E9EEEA',
       borderRadius: '10px',
       border: '1px solid #767676',
@@ -129,6 +129,7 @@ export default function WhatYouOffer() {
       fontWeight: '400',
       padding: '0 16px',
       width: '100%',
+      minWidth:'200px'
  }}
         >
           {CATEGORY_OPTIONS.map((cat) => (

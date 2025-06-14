@@ -15,24 +15,19 @@ export default function ColorPallete({ value, onChange }) {
   const labelContainerStyle = {
     display: 'flex',
     alignItems: 'center',
-    flex: '0.3',
-    minWidth: '100px',
-  };
-
-  const labelTextStyle = {
     fontSize: '16px',
     fontWeight: '400',
     marginRight: '6px',
-    flex:'2.9'
+    flex:'0.32',
+    minWidth:'250px',
+    gap:'20px'
   };
 
-  const colonStyle = {
-    flex: 1,
-  };
+ 
 
   const colorWrapperStyle = {
     display: 'flex',
-    flex: '0.2',
+    flex: '0.1 400',
     gap: '10px',
 
   };
@@ -44,13 +39,14 @@ export default function ColorPallete({ value, onChange }) {
     backgroundColor: c,
     border: value === c ? '2px solid #47F84D' : '1px solid #ccc',
     cursor: 'pointer',
+   
   });
 
   return (
     <div style={containerStyle}>
       <div style={labelContainerStyle}>
-        <span style={labelTextStyle}>Color</span>
-        <span style={colonStyle}>:</span>
+        <span >Color</span>
+        <span >:</span>
       </div>
       <div style={colorWrapperStyle}>
         {colors.map((c, index) => (

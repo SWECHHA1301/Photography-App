@@ -1,3 +1,4 @@
+import { Backpack } from 'lucide-react';
 import React from 'react';
 
 export default function InputBar({
@@ -22,13 +23,14 @@ export default function InputBar({
     title: {
       fontSize: '16px',
       fontWeight: '400',
-      flex: '0.3',
-      // minWidth: '250px',
+      flex: '0.4',
+      minWidth: '250px',
       display: 'flex',
       alignItems: 'center',
+    
       ...divStyle,
       gap: '20px'
-
+  
     },
     inputContainer: {
       height: '41px',
@@ -40,7 +42,7 @@ export default function InputBar({
       fontWeight: '400',
       padding: '0 16px',
       width: '100%',
-      minWidth:'150px',
+      minWidth:'200px',
       ...customStyle,
     },
   };
@@ -48,10 +50,8 @@ export default function InputBar({
   return (
     <div style={styles.container}>
       <label style={styles.title}>
-        <span style={{
-          flex: '3',
-        }}>{label}</span>
-        <span style={{ flex: '1', }}>:</span>
+        <span>{label}</span>
+        <span>:</span>
       </label>
 
       <input

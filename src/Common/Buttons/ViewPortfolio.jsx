@@ -11,6 +11,7 @@ export default function ViewPortfolio({ holder = "View Portfolio" }) {
     fontWeight: '400',
     color: '#fff',
     border: 'none',
+    minWidth:'150px'
   };
 
   return (

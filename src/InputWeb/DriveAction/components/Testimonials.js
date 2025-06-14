@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import { ChevronDown, Star } from "lucide-react";
 
-export default function Testimonial() {
+export default function Testimonial({ data, updateData }) {
   const [rating, setRating] = useState(0);
-  const inputs = [
-    { label: "Avatar", placeholder: "e.g. Hello, I am name" },
-    { label: "Author's Name", placeholder: "Emily & James Rodriguez" },
+  const input = [
+    { label: "Avatar", key: "avatar", placeholder: "e.g. Hello, I am name" },
+    { label: "Author's Name", key: "author", placeholder: "Emily & James Rodriguez" },
     {
       label: "Comment",
+      key: "comment",
       placeholder:
         "Sarah captured our wedding day perfectly! Her attention to detail and ability to capture candid moments was incredible.",
     },
@@ -82,16 +83,20 @@ export default function Testimonial() {
     <div style={styles.container}>
 
 
-      {inputs.map((input, index) => (
+      {input.map((input, index) => (
         <div key={index} style={styles.row}>
           <div style={styles.label}>{input.label} :</div>
           {input.label === "Comment" ? (
             <textarea
               placeholder={input.placeholder}
+              value={data[input.key] || ""}
+              onChange={(e) => updateData({ [input.key]: e.target.value })}
               style={styles.textarea}
             />
           ) : (
-            <input placeholder={input.placeholder} style={styles.input} />
+            <input placeholder={input.placeholder}
+            value={data[input.key] || ""}
+              onChange={(e) => updateData({ [input.key]: e.target.value })} style={styles.input} />
           )}
         </div>
       ))}

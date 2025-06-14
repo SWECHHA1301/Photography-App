@@ -105,14 +105,14 @@ export default function Status() {
            holder="e.g. Photo Sessions"
            value={activeService.Label}
            onChange={e => handleChange(activeIndex, 'Label', e.target.value)}
-            customStyle={{flex :'0.35 200'}}
+              customStyle={{flex :'0.1 400px' }}
          />
          <InputBar
            label="Achived Numbers"
            holder="500+"
            value={activeService.Achived}
            onChange={e => handleChange(activeIndex, 'Achived', e.target.value)}
-           customStyle={{flex :'0.35 200'}}
+             customStyle={{flex :'0.1 400px' }}
          />
        <IconCategorySelector/>
         

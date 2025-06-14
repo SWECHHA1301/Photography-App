@@ -1,12 +1,12 @@
 import React from "react";
 
-export default function ContactInfo() {
+export default function ContactInfo({ data, updateData }) {
   const fields = [
-    "Email",
-    "Phone",
-    "Address",
-    "Linkedin id",
-    "Instagram id",
+    { label: "Email", key: "email" },
+    { label: "Phone", key: "phone" },
+    { label: "Address", key: "address" },
+    { label: "Linkedin id", key: "linkedin" },
+    { label: "Instagram id", key: "instagram" },
   ];
 
   const styles = {
@@ -14,7 +14,7 @@ export default function ContactInfo() {
       display: "flex",
       alignItems: "center",
       marginBottom: "12px",
-            flexWrap: "wrap",
+      flexWrap: "wrap",
     },
     label: {
       width: "418px",
@@ -47,11 +47,19 @@ export default function ContactInfo() {
     <div>
       {fields.map((field, index) => (
         <div key={index} style={styles.row}>
-          <div style={styles.label}>{field} :</div>
-          {field === "Address" ? (
-            <textarea style={styles.textarea} />
+          <div style={styles.label}>{field.label} :</div>
+          {field.key === "address" ? (
+            <textarea
+              style={styles.textarea}
+              value={data[field.key] || ""}
+              onChange={(e) => updateData({ [field.key]: e.target.value })}
+            />
           ) : (
-            <input style={styles.input} />
+            <input
+              style={styles.input}
+              value={data[field.key] || ""}
+              onChange={(e) => updateData({ [field.key]: e.target.value })}
+            />
           )}
         </div>
       ))}

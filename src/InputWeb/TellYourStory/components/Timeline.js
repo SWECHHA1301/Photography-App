@@ -3,7 +3,6 @@ import { ChevronDown } from "lucide-react";
 import ColorPallete from "../../../Common/ColorPallete";
 
 export default function Timeline() {
-  const [selectedYear, setSelectedYear] = useState("");
 
   const years = Array.from({ length: 50 }, (_, i) => 1980 + i);
 
@@ -100,7 +99,7 @@ export default function Timeline() {
       maxWidth: "335px",
       width: "100%",
       height: "40px",
-      padding: "6px 30px 6px 10px", // extra right padding for icon space
+      padding: "6px 30px 6px 10px",
       borderRadius: "10px",
       border: "1px solid #ccc",
       backgroundColor: "#E9EEEA",
@@ -111,13 +110,13 @@ export default function Timeline() {
     },
     chevron: {
       position: "absolute",
-      left: "30%", // This was your custom position
+      left: "30%",
     },
   };
 
   return (
     <div>
-      {/* Year Buttons */}
+   
       <div style={{ display: "flex", marginBottom: 10 }}>
         {services.map((service, index) => (
           <button
@@ -168,7 +167,7 @@ export default function Timeline() {
         </button>
       </div>
 
-      {/* Year Dropdown */}
+
       <div style={styles.row}>
         <div style={styles.label}>Year</div>
         <div style={styles.colon}>:</div>
@@ -190,7 +189,7 @@ export default function Timeline() {
         </div>
       </div>
 
-      {/* Title & Description */}
+   
       {inputs.map((input, index) => (
         <div key={index} style={styles.row}>
           <div style={styles.label}>{input.label}</div>
@@ -219,7 +218,7 @@ export default function Timeline() {
         </div>
       ))}
 
-      {/* Color Picker */}
+
       <ColorPallete />
     </div>
   );

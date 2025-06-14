@@ -1,28 +1,53 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
-export default function SEO() {
-  const [rating, setRating] = useState(0);
+export default function SEO({ data, updateData }) {
+  const [formData, setFormData] = useState({
+    Title: "",
+    Description: "",
+    Keyword: "",
+    "Secondary Button": "",
+  });
+
+  useEffect(() => {
+    if (data) {
+      setFormData((prev) => ({
+        ...prev,
+        ...data, 
+      }));
+    }
+  }, [data]);
+
   const inputs = [
-     {
-      label: "Title", placeholder: "e.g. 2024"
+    {
+      label: "Title",
+      placeholder: "e.g. 2024",
+      maxLength: 30,
     },
     {
       label: "Description",
       placeholder:
         "Sarah captured our wedding day perfectly! Her attention to detail and ability to capture candid moments was incredible.",
-        maxLength: 80,
+      maxLength: 80,
     },
-    { label: "Keyword", placeholder: "e.g. Hello, I am name",maxLength: 30 },
-    { label: "Secondary Button", placeholder: "Emily & James Rodriguez",maxLength: 30 },
+    {
+      label: "Keyword",
+      placeholder: "e.g. Photography, Wedding Photography",
+      maxLength: 30,
+    },
+    {
+      label: "Secondary Button",
+      placeholder: "View Portfolio",
+      maxLength: 30,
+    },
   ];
 
   const styles = {
-     row: {
+    row: {
       display: "flex",
       alignItems: "center",
       marginBottom: "12px",
-      position: "relative", // for select + icon
-        flexWrap:'wrap'
+      position: "relative",
+      flexWrap: "wrap",
     },
     label: {
       width: "418px",
@@ -31,7 +56,8 @@ export default function SEO() {
       color: "#2F2F2F",
     },
     input: {
-      width: "389px",
+      maxWidth: "389px",
+      width: "100%",
       padding: "6px 10px",
       borderRadius: "10px",
       border: "1px solid #ccc",
@@ -39,8 +65,9 @@ export default function SEO() {
       height: "32px",
     },
     textarea: {
-      width: "389px",
-      height: "64px",
+      maxWidth: "389px",
+      width: "100%",
+      height: "65px",
       padding: "6px 10px",
       borderRadius: "10px",
       border: "1px solid #ccc",
@@ -49,26 +76,65 @@ export default function SEO() {
       fontSize: "14px",
       resize: "none",
     },
+    charCount: {
+      position: "absolute",
+      bottom: "2px",
+      right: "-5px",
+      fontSize: "12px",
+      color: "#767676",
+    },
+  };
+
+  const handleChange = (label, value) => {
+    const updated = {
+      ...formData,
+      [label]: value,
+    };
+    setFormData(updated);
+    updateData(updated); 
   };
 
   return (
-    <div style={styles.container}>
+    <div>
+      {inputs.map((input, index) => {
+        const value = formData[input.label] || "";
+        const maxLength = input.maxLength || 100;
 
-      {inputs.map((input, index) => (
-        <div key={index} style={styles.row}>
-          <div style={styles.label}>{input.label} :</div>
-          {input.label === "Description" ? (
-            <textarea
-              placeholder={input.placeholder}
-              style={styles.textarea}
-            />
-          ) : (
-            <input placeholder={input.placeholder} style={styles.input} />
-            
-          )}
-        </div>
-      ))}
-
+        return (
+          <div key={index} style={{ ...styles.row, alignItems: "flex-start" }}>
+            <div style={styles.label}>{input.label} :</div>
+            <div style={{ position: "relative", width: "389px" }}>
+              {input.label === "Description" ? (
+                <>
+                  <textarea
+                    placeholder={input.placeholder}
+                    maxLength={maxLength}
+                    value={value}
+                    onChange={(e) => handleChange(input.label, e.target.value)}
+                    style={styles.textarea}
+                  />
+                  <div style={styles.charCount}>
+                    {value.length}/{maxLength}
+                  </div>
+                </>
+              ) : (
+                <>
+                  <input
+                    placeholder={input.placeholder}
+                    maxLength={maxLength}
+                    value={value}
+                    onChange={(e) => handleChange(input.label, e.target.value)}
+                    style={styles.input}
+                  />
+                  <div style={styles.charCount}>
+                    {value.length}/{maxLength}
+                  </div>
+                </>
+              )}
+            </div>
+          </div>
+        );
+      })}
     </div>
   );
 }

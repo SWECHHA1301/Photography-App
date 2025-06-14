@@ -1,13 +1,17 @@
 import React from "react";
 import { ChevronDown } from "lucide-react";
 
-export default function BuisnessInfo() {
+export default function BuisnessInfo({ data, updateData }) {
   const inputs = [
-    { label: "Name", placeholder: "e.g. Sarah Mitchell" },
-    { label: "Tagline", placeholder: "e.g. Photography" },
-    { label: "Full Name For the Site", placeholder: "e.g. Sarah Mitchell Photography" },
-    { label: "Description", placeholder: "" },
-    { label: "Location", placeholder: "e.g. Street/Area, Country" },
+    { label: "Name", key: "name", placeholder: "e.g. Sarah Mitchell" },
+    { label: "Tagline", key: "tagline", placeholder: "e.g. Photography" },
+    {
+      label: "Full Name For the Site",
+      key: "fullName",
+      placeholder: "e.g. Sarah Mitchell Photography",
+    },
+    { label: "Description", key: "description", placeholder: "" },
+    { label: "Location", key: "location", placeholder: "e.g. Street/Area, Country" },
   ];
 
   const styles = {
@@ -16,7 +20,7 @@ export default function BuisnessInfo() {
       flexWrap: "wrap",
       alignItems: "center",
       marginBottom: "12px",
-      position: "relative", // for select + icon
+      position: "relative",
     },
     label: {
       width: "418px",
@@ -54,7 +58,7 @@ export default function BuisnessInfo() {
       borderRadius: "10px",
       border: "1px solid #ccc",
       backgroundColor: "#eef0ec",
-      appearance: "none", // hide default arrow
+      appearance: "none",
       WebkitAppearance: "none",
       MozAppearance: "none",
       fontSize: "14px",
@@ -74,23 +78,37 @@ export default function BuisnessInfo() {
       {inputs.map((input, index) => (
         <div key={index} style={styles.row}>
           <div style={styles.label}>{input.label} :</div>
-          {(input.label === "Description" || input.label === "Location") ? (
-            <textarea placeholder={input.placeholder} style={styles.textarea} />
+          {input.key === "description" || input.key === "location" ? (
+            <textarea
+              placeholder={input.placeholder}
+              style={styles.textarea}
+              value={data[input.key] || ""}
+              onChange={(e) => updateData({ [input.key]: e.target.value })}
+            />
           ) : (
-            <input placeholder={input.placeholder} style={styles.input} />
+            <input
+              placeholder={input.placeholder}
+              style={styles.input}
+              value={data[input.key] || ""}
+              onChange={(e) => updateData({ [input.key]: e.target.value })}
+            />
           )}
         </div>
       ))}
 
-      {/* Established Time with Chevron */}
+      {/* Established Time Dropdown */}
       <div style={styles.row}>
         <div style={styles.label}>Established Time :</div>
         <div style={styles.selectWrapper}>
-          <select style={styles.select}>
-            <option>Year</option>
-            <option>2024</option>
-            <option>2023</option>
-            <option>2022</option>
+          <select
+            style={styles.select}
+            value={data.establishedTime || ""}
+            onChange={(e) => updateData({ establishedTime: e.target.value })}
+          >
+            <option value="">Year</option>
+            <option value="2024">2024</option>
+            <option value="2023">2023</option>
+            <option value="2022">2022</option>
           </select>
           <ChevronDown size={16} style={styles.chevron} />
         </div>

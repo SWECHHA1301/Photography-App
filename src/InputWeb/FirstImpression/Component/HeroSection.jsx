@@ -11,12 +11,12 @@ export default function HeroSection() {
   return (
     <>
       <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', padding: '24px 0' }}>
-        <InputBar label="Title" holder="e.g. Sarah Mitchell" customStyle={{ flex: '0.4 200px' }} />
+        <InputBar label="Title" holder="e.g. Sarah Mitchell" customStyle={{ flex: '0.1 400px' }} />
 
         <InputBar
           label="Subtitle"
           holder="e.g. Capturing life’s most precious moments through the lens of artistry and emotion"
-          customStyle={{ height: '75px', flex: '0.4 200px' }}
+          customStyle={{ height: '75px', flex: '0.1 400px' }}
         />
 
         <HeroMedia />
@@ -25,7 +25,7 @@ export default function HeroSection() {
           <InputBar
             label="Cta Primary"
             holder="e.g. View Portfolio"
-            customStyle={{ flex: '0.4 200px' }}
+            customStyle={{flex :'0.1 400px' }}
             value={ctaPrimary}
             onChange={(e) => setCtaPrimary(e.target.value)}
             suffixComponent={
@@ -38,7 +38,7 @@ export default function HeroSection() {
           <InputBar
             label="Cta Secondary"
             holder="e.g. About Us"
-            customStyle={{ flex: '0.4 200px' }}
+             customStyle={{flex :'0.1 400px' }}
             value={ctaSecondary}
             onChange={(e) => setCtaSecondary(e.target.value)}
             suffixComponent={
@@ -51,7 +51,7 @@ export default function HeroSection() {
         <InputBar
           label="Availability Text"
           holder="e.g. Available for bookings"
-          customStyle={{ flex: '0.4 200px' }}
+          customStyle={{ flex: '0.1 400px' }}
         />
       </div>
     </>

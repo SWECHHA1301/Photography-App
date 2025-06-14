@@ -10,60 +10,72 @@ const ICON_OPTIONS = [
 const styles = {
   container: {
     width: '100%',
-    marginBottom: '24px',
+   
+
   },
   row: {
     display: 'flex',
     flexWrap: 'wrap',
     alignItems: 'center',
-    // gap: '8px',
+    gap: '8px',
+    flexDirection: 'row',
   },
   label: {
-    display: 'flex',
-    gap: '20px',
-    alignItems: 'flex-start',
+    flex:'0.39',
     fontSize: '16px',
     fontWeight: '400',
-    minWidth: '100px',
-    flex: '0.3',
+    minWidth: '250px',
+    display:'flex',
+    gap:'20px',
+    
   },
-  inputGroup: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    alignItems: 'center',
-    gap: '10px',
-    flex: '0.49',
+  inputWrapper: {
+    flex:'0.35 200px',
+    minWidth: '200px',
+    position: 'relative',
+    width:'100%'
   },
-  previewBox: {
-    width: '40px',
-    height: '40px',
-    border: '1px solid #ccc',
-    borderRadius: '8px',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    fontSize: '24px',
-    backgroundColor: '#f5f5f5',
-    overflow: 'hidden',
-    color: '#999',
-  },
-  select: {
-    padding: '8px',
+  selectBox: {
+    width: '100%',
+    //  minWidth:'250px',
+    padding: '0 16px 0 40px',
     backgroundColor: '#E9EEEA',
     borderRadius: '10px',
     border: '1px solid #767676',
     height: '41px',
-    minWidth: '150px',
-    flex: '1',
-    fontSize:'16px',
-    fontWeight:'400'
+    fontSize: '16px',
+    fontWeight: '400',
+    appearance: 'none',
+    position: 'relative',
+    cursor: 'pointer',
+  },
+  previewIcon: {
+    position: 'absolute',
+    top: '50%',
+    left: '12px',
+    transform: 'translateY(-50%)',
+    width: '24px',
+    height: '24px',
+    borderRadius: '4px',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    fontSize: '18px',
+    overflow: 'hidden',
+
+  },
+  image: {
+    width: '100%',
+    height: '100%',
+    objectFit: 'cover',
+    borderRadius: '4px',
+    display: 'block',
   },
   uploadWrapper: {
     display: 'flex',
     flexDirection: 'column',
-    alignItems: 'flex-start',
     gap: '4px',
-  
+    marginTop: '14px',
   },
   uploadLabel: {
     display: 'inline-block',
@@ -74,15 +86,14 @@ const styles = {
     cursor: 'pointer',
     fontSize: '16px',
     fontWeight: '400',
-    width: '168px',
     textAlign: 'center',
     height: '30px',
     lineHeight: '30px',
+    minWidth:'150px',
   },
   note: {
     fontSize: '12px',
     color: '#DF5151',
-    marginTop: '4px',
   },
 };
 
@@ -117,40 +128,50 @@ export default function IconCategorySelector() {
     reader.readAsDataURL(file);
   };
 
+  const renderPreview = () => {
+    if (uploadedIcon) {
+      return <img src={uploadedIcon} alt="Uploaded" style={styles.image} />;
+    } else if (selectedIcon) {
+      return selectedIcon;
+    } else {
+      return '+';
+    }
+  };
+
   return (
     <div style={styles.container}>
       <div style={styles.row}>
-        <label style={styles.label}>
-          <span style={{flex:'3'}}>Icon</span>
-          <span style={{flex:'1.1'}}>:</span>
-        </label>
-        <div style={styles.inputGroup}>
-          {/* Icon Dropdown */}
-          <select value={selectedIcon} onChange={handleIconSelect} style={styles.select}>
-            <option value="">Select Icon</option>
-            {ICON_OPTIONS.map((icon) => (
-              <option key={icon.label} value={icon.value}>
-                {icon.label} {icon.value}
-              </option>
-            ))}
-          </select>
-
-          {/* Icon or Image Preview */}
-          <div style={styles.previewBox}>
-            {uploadedIcon ? (
-              <img
-                src={uploadedIcon}
-                alt="Uploaded Icon"
-                style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-              />
-            ) : selectedIcon ? (
-              selectedIcon
-            ) : (
-              '+'
-            )}
+        <label style={styles.label}><span>Icon </span>
+        <span>:</span></label>
+        <div style={{ display:'flex' , alignItems:'center',gap:'15px',flex:'0.3 400px',
+          flexWrap:'wrap'
+        }}>
+          <div style={styles.inputWrapper}>
+            <div style={styles.previewIcon}>{renderPreview()}</div>
+            <select
+              value={selectedIcon}
+              onChange={handleIconSelect}
+              style={styles.selectBox}
+              disabled={!!uploadedIcon}
+            >
+              <option value="">Select Icon</option>
+              {ICON_OPTIONS.map((icon) => (
+                <option key={icon.label} value={icon.value}>
+                  {icon.label} {icon.value}
+                </option>
+              ))}
+            </select>
           </div>
-
-          {/* Upload */}
+          <div style={{
+            display:'flex', alignItems:'center',gap:'15px'
+          }}>
+          <div style={{display:'flex' ,flexDirection:'column' ,alignItems:'center',
+            color:'#767676'
+          }}>
+            <span>|</span>
+            <span>OR</span>
+            <span>|</span>
+          </div>
           <div style={styles.uploadWrapper}>
             <label style={styles.uploadLabel}>
               Upload
@@ -163,13 +184,9 @@ export default function IconCategorySelector() {
             </label>
             <div style={styles.note}>(Must be square - 1:1 ratio)</div>
           </div>
+          </div>
         </div>
       </div>
     </div>
   );
 }
-
-
-
-
-

@@ -11,6 +11,7 @@ export default function ViewPortfolio({ holder = "About Us" }) {
     fontWeight: '400',
     color: '#fff',
     border: '1.5px solid #2C7A7B',
+    minWidth:'150px',
   };
 
   return (
