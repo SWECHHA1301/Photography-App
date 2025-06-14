@@ -11,7 +11,7 @@ import Inquiries from "./Inquiries/Inquiries";
 function App() {
   return (
     <div>
-      <MainContainer children={<TransitionHistory />} />
+      <MainContainer children={<BuyCredits />} />
       {/* <BuyCredits /> */}
       {/* <TransitionHistory /> */}
       
