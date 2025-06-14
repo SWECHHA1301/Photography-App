@@ -24,7 +24,7 @@ export default function About({ data, updateData }) {
       gap: "20px",
     },
     label: {
-      width: "400px",
+      width: "355px",
       fontSize: "16px",
       fontWeight: "400",
       color: "#2F2F2F",
@@ -34,7 +34,7 @@ export default function About({ data, updateData }) {
       width: "389px",
       padding: "6px 10px",
       borderRadius: "10px",
-      border: "1px solid #ccc",
+      border: "1px solid #767676",
       backgroundColor: "#E9EEEA",
       height: "32px",
       fontSize: "14px",
